@@ -2,8 +2,8 @@
     <string name="app_name">Workout Tracker</string>
     <string name="about_page">About</string>
     <string name="enter">Enter App</string>
-    <string name="welcome">Welcome</string>
-    <string name="title_activity_welcome_page2">WelcomePage2</string>
+    <string name="welcome">Welcome to the Workout Tracker App</string>
+    <string name="title_activity_welcome_page2">Workout Tracker</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>

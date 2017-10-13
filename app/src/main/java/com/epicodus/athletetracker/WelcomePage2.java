@@ -1,55 +1,65 @@
 package com.epicodus.athletetracker;
 
 
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
+
 
 import android.support.v4.app.FragmentTransaction;
-import android.view.View;
+
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
+import static android.R.attr.fragment;
+
 public class WelcomePage2 extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-
+    @Bind(R.id.toolbar) Toolbar mTools;
     @Bind(R.id.welcome_page) TextView mWelcomePage;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome_page2);
+
         ButterKnife.bind(this);
+
         Typeface welcomePageFont = Typeface.createFromAsset(getAssets(), "fonts/Aller_Rg.ttf");
         mWelcomePage.setTypeface(welcomePageFont);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+
+        setSupportActionBar(mTools);
+
+
+
+//        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+//        fab.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+//                        .setAction("Action", null).show();
+//            }
+//        });
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+                this, drawer, mTools, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
@@ -97,13 +107,19 @@ public class WelcomePage2 extends AppCompatActivity
 
         //Handle the navigation if clicked, told which fragment to go to.
         if (id == R.id.About) {
-            setTitle("About the App");
+            mWelcomePage.setText("");
+            setTitle("About the Application");
             AboutAppFragment fragment = new AboutAppFragment();
             FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-            fragmentTransaction.replace(R.id.frame, fragment, "About the App");
+            fragmentTransaction.replace(R.id.frame, fragment, "About the Application");
             fragmentTransaction.commit();
+        } else if (id == R.id.Home) {
+            //Rework later... kind of badly done, but works
+           Intent intent = new Intent(this, WelcomePage2.class);
+            startActivity(intent);
 
         } else if (id == R.id.Contact) {
+            mWelcomePage.setText("");
             setTitle("Contact Us");
             ContactFragment fragment1 = new ContactFragment();
             FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
@@ -111,6 +127,7 @@ public class WelcomePage2 extends AppCompatActivity
             fragmentTransaction.commit();
 
         } else if (id == R.id.Bio) {
+            mWelcomePage.setText("");
             setTitle("About Us");
             BioFragment fragment2 = new BioFragment();
             FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
