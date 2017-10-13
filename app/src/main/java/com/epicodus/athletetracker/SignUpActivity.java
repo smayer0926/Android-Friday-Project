@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
@@ -34,12 +35,14 @@ public class SignUpActivity extends AppCompatActivity {
             public void onClick(View view){
                 String email = mEmail.getText().toString();
                 String name = mName.getText().toString();
-
-
-                Intent signUpIntent = new Intent(SignUpActivity.this, WelcomePage2.class);
-                signUpIntent.putExtra("name", name);
-                signUpIntent.putExtra("email", email);
-                startActivity(signUpIntent);
+                if(email.equals("") || name.equals("")){
+                    Toast.makeText(SignUpActivity.this, "Please fill out all the fields!", Toast.LENGTH_SHORT).show();
+                }else {
+                    Intent signUpIntent = new Intent(SignUpActivity.this, WelcomePage2.class);
+                    signUpIntent.putExtra("name", name);
+                    signUpIntent.putExtra("email", email);
+                    startActivity(signUpIntent);
+                }
             }
         });
     }
