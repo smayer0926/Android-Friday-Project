@@ -7,11 +7,14 @@
     <string name="title_activity_welcome_page2">Workout Tracker</string>
     <string name="or">OR</string>
 
+    <string name="newStories">The latest news about your health</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
+
+
     <!--Sign Up page information -->
     <string name="SignUpemail">Your Email</string>
     <string name="SignUppassword">Your Password</string>

@@ -17,21 +17,35 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.FrameLayout;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import java.util.ArrayList;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-import static android.R.attr.fragment;
 
 public class WelcomePage2 extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     @Bind(R.id.toolbar) Toolbar mTools;
     @Bind(R.id.welcome_page) TextView mWelcomePage;
-//    @Bind(R.id.name_on_Nav) TextView mNameOnNav;
-//    @Bind(R.id.email_on_Nav) TextView mEmailOnNav;
+    @Bind(R.id.story_list_view) ListView mWorkoutList;
+    @Bind(R.id.news_about_health) TextView mNewsAboutHealth;
+
+    private String [] stories = new String []{"I want there to be an API that populates stories about health here","DNA study provides insight into how to live longer","Child and teen obesity spreading across the globe"};
+    private String [] url = new String [] {"xxxx","http://www.bbc.com/news/health-41588613","http://www.bbc.com/news/health-41550159"};
+
+
+    public void clearFunction(){
+        mWorkoutList.setAdapter(null);
+        mWelcomePage.setText("");
+        mNewsAboutHealth.setText("");
+    }
 
 
     @Override
@@ -48,14 +62,22 @@ public class WelcomePage2 extends AppCompatActivity
         String email = getIntent().getStringExtra("email");
 
         mWelcomePage.setText("Welcome, " + name + "!");
-
-//        mNameOnNav.setText(name);
-//        mEmailOnNav.setText(email);
-
         setSupportActionBar(mTools);
 
+    //ADAPTER
 
+        WorkoutAdapter adapter = new WorkoutAdapter(this, android.R.layout.simple_list_item_1, stories, url);
+        mWorkoutList.setAdapter(adapter);
+        mWorkoutList.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l){
+                String workouts = ((TextView)view).getText().toString();
+                Toast.makeText(WelcomePage2.this, workouts, Toast.LENGTH_LONG).show();
 
+            }
+        });
+
+// DON'T DELETE YET
 //        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
 //        fab.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -115,7 +137,7 @@ public class WelcomePage2 extends AppCompatActivity
 
         //Handle the navigation if clicked, told which fragment to go to.
         if (id == R.id.About) {
-            mWelcomePage.setText("");
+            clearFunction();
             setTitle("About the Application");
             AboutAppFragment fragment = new AboutAppFragment();
             FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
@@ -127,7 +149,7 @@ public class WelcomePage2 extends AppCompatActivity
             startActivity(intent);
 
         } else if (id == R.id.Contact) {
-            mWelcomePage.setText("");
+            clearFunction();
             setTitle("Contact Us");
             ContactFragment fragment1 = new ContactFragment();
             FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
@@ -135,7 +157,7 @@ public class WelcomePage2 extends AppCompatActivity
             fragmentTransaction.commit();
 
         } else if (id == R.id.Bio) {
-            mWelcomePage.setText("");
+            clearFunction();
             setTitle("About Us");
             BioFragment fragment2 = new BioFragment();
             FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
@@ -153,4 +175,6 @@ public class WelcomePage2 extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+
 }
