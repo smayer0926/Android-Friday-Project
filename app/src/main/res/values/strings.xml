@@ -7,10 +7,12 @@
     <string name="title_activity_welcome_page2">Workout Tracker</string>
     <string name="or">OR</string>
 
+
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
+    <!--Sign Up page information -->
     <string name="SignUpemail">Your Email</string>
     <string name="SignUppassword">Your Password</string>
     <string name="SignUpname">First Name</string>
@@ -19,9 +21,24 @@
     <string name="SignUp">Finish Registration!</string>
     <string name="signUpText">Welcome to the Workout Tracker, sign-up below to get started on your workout today!</string>
 
+    <!--ABOUT APPLICATION INFORMATION-->
+    <string name="about_App_Explanation">The Workout Tracker was created to allow users to be able to track their workouts. This includes running, walking, biking, etc. The other goal is to be able to see how many calories were burned during the workout bout that one may do during a day. </string>
+    <string name="aboutApp">About the Workout Tracker</string>
+
+    <!--CONTACT PAGE INFORMATION-->
+    <string name="ContactUs">Want to Contact Us?</string>
+    <string name="contactMe">If there are any questions or concerns about this application please click the little icon below to email us!</string>
+
+    <!--BIO PAGE-->
+    <string name="bioPageHeader">Why did I get created?</string>
+    <string name="bioPageText">This application was created for a project at Epicodus, where 4 weeks were spent to learn the basics of Android. A workout application seemed practical to make and like something that would be useful in the future. </string>
 
 
-    <!-- TODO: Remove or change this placeholder text -->
+
+
+
+    <!--These are for the login page, don't touch yet-->
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="userName">User Name Here</string>
     <string name="userEmail">User Email?</string>

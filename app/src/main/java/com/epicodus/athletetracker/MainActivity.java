@@ -2,6 +2,7 @@ package com.epicodus.athletetracker;
 
 import android.content.Intent;
 import android.graphics.Typeface;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -19,6 +20,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Bind(R.id.login) Button mLogin;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,6 +33,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mLogin.setOnClickListener(this);
         Typeface newFont = Typeface.createFromAsset(getAssets(), "fonts/Aller_Bd.ttf");
         mMainText.setTypeface(newFont);
+
 
     }
 
