@@ -22,13 +22,17 @@
         <activity android:name=".AboutActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.epicodus.athletetracker.MainActivity"></meta-data>
+                android:value="com.epicodus.athletetracker.MainActivity" />
         </activity>
         <activity android:name=".WelcomeActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.epicodus.athletetracker.MainActivity"></meta-data>
+                android:value="com.epicodus.athletetracker.MainActivity" />
         </activity>
+        <activity
+            android:name=".WelcomePage2"
+            android:label="@string/title_activity_welcome_page2"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

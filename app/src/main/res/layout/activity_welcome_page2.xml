@@ -22,4 +22,7 @@
         app:headerLayout="@layout/nav_header_welcome_page2"
         app:menu="@menu/activity_welcome_page2_drawer" />
 
+
+
 </android.support.v4.widget.DrawerLayout>
+

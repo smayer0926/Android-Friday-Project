@@ -19,13 +19,13 @@
         <!--android:divider="@android:color/transparent"-->
         <!--android:dividerHeight="0dp"-->
         <!--android:background="#111"/>-->
-    <TextView
-        android:id="@+id/welcome_page"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:text="@string/welcome"
-        android:textSize="30sp"
-        android:layout_marginTop="20dp"/>
+    <!--<TextView-->
+        <!--android:id="@+id/welcome_page"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_centerHorizontal="true"-->
+        <!--android:text="@string/welcome"-->
+        <!--android:textSize="30sp"-->
+        <!--android:layout_marginTop="20dp"/>-->
 
 </RelativeLayout>
