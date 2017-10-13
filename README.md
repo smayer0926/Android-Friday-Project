@@ -51,7 +51,7 @@ _If there are any questions or concerns, please contact me at smayer0926@gmail.c
 
 ## Known Bugs
 * I am unable to currently get peoples names onto the DrawerLayout.
-* No login, yet.
+* Login doesn't work, yet!
 * Not able to hold onto any information, yet. So if the Home button is clicked in the DrawerLayout it will say "Welcome, null". This will get fixed soon.
 
 
