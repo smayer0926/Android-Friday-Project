@@ -9,6 +9,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="30sp"
+        android:id="@+id/bio_page_header"
         android:textAlignment="center"
         android:text="@string/bioPageHeader"
         app:layout_constraintTop_toTopOf="parent"
@@ -23,7 +24,7 @@
     <TextView
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:id="@+id/bioPageText"
+        android:id="@+id/bio_page_text"
         android:text="@string/bioPageText"
         android:textAlignment="center"
         android:textSize="20sp"
