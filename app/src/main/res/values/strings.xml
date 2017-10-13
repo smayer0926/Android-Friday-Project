@@ -11,10 +11,11 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
-    <string name="SignUpemail">Your Email:</string>
-    <string name="SignUppassword">Your Password:</string>
-    <string name="SignUpname">Your Name:</string>
-    <string name="SignUpage">Your age:</string>
+    <string name="SignUpemail">Your Email</string>
+    <string name="SignUppassword">Your Password</string>
+    <string name="SignUpname">First Name</string>
+    <string name="SignUpLast">Last Name</string>
+    <string name="SignUpage">Your age</string>
     <string name="SignUp">Finish Registration!</string>
     <string name="signUpText">Welcome to the Workout Tracker, sign-up below to get started on your workout today!</string>
 

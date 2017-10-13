@@ -30,6 +30,8 @@ public class WelcomePage2 extends AppCompatActivity
 
     @Bind(R.id.toolbar) Toolbar mTools;
     @Bind(R.id.welcome_page) TextView mWelcomePage;
+//    @Bind(R.id.name_on_Nav) TextView mNameOnNav;
+//    @Bind(R.id.email_on_Nav) TextView mEmailOnNav;
 
 
     @Override
@@ -42,7 +44,13 @@ public class WelcomePage2 extends AppCompatActivity
         Typeface welcomePageFont = Typeface.createFromAsset(getAssets(), "fonts/Aller_Rg.ttf");
         mWelcomePage.setTypeface(welcomePageFont);
 
+        String name = getIntent().getStringExtra("name");
+        String email = getIntent().getStringExtra("email");
 
+        mWelcomePage.setText("Welcome, " + name + "!");
+
+//        mNameOnNav.setText(name);
+//        mEmailOnNav.setText(email);
 
         setSupportActionBar(mTools);
 
