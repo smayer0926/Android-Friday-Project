@@ -37,6 +37,8 @@ public class WelcomePage2 extends AppCompatActivity
     @Bind(R.id.story_list_view) ListView mWorkoutList;
     @Bind(R.id.news_about_health) TextView mNewsAboutHealth;
 
+
+
     private String [] stories = new String []{"I want there to be an API that populates stories about health here","DNA study provides insight into how to live longer","Child and teen obesity spreading across the globe"};
     private String [] url = new String [] {"xxxx","http://www.bbc.com/news/health-41588613","http://www.bbc.com/news/health-41550159"};
 
