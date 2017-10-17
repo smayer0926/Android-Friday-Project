@@ -36,7 +36,7 @@ public class WelcomePage2 extends AppCompatActivity
     @Bind(R.id.welcome_page) TextView mWelcomePage;
     @Bind(R.id.story_list_view) ListView mWorkoutList;
     @Bind(R.id.news_about_health) TextView mNewsAboutHealth;
-
+    @Bind(R.id.nav_view) NavigationView navigationView;
 
 
     private String [] stories = new String []{"I want there to be an API that populates stories about health here","DNA study provides insight into how to live longer","Child and teen obesity spreading across the globe"};
@@ -48,6 +48,7 @@ public class WelcomePage2 extends AppCompatActivity
         mWelcomePage.setText("");
         mNewsAboutHealth.setText("");
     }
+
 
 
     @Override
@@ -95,9 +96,18 @@ public class WelcomePage2 extends AppCompatActivity
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+
+//        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        View hView = navigationView.getHeaderView(0);
+        TextView nav_user = (TextView)hView.findViewById(R.id.name_on_Nav);
+        TextView nav_email = (TextView)hView.findViewById(R.id.email_on_Nav);
+        nav_user.setText(name);
+        nav_email.setText(email);
         navigationView.setNavigationItemSelectedListener(this);
+
     }
+
+
 
     @Override
     public void onBackPressed() {
@@ -147,8 +157,8 @@ public class WelcomePage2 extends AppCompatActivity
             fragmentTransaction.commit();
         } else if (id == R.id.Home) {
             //Rework later... kind of badly done, but works
-           Intent intent = new Intent(this, WelcomePage2.class);
-            startActivity(intent);
+
+            return true;
 
         } else if (id == R.id.Contact) {
             clearFunction();
@@ -167,9 +177,6 @@ public class WelcomePage2 extends AppCompatActivity
             fragmentTransaction.commit();
 
 
-//        } else if (id == R.id.nav_share) {
-//
-//        } else if (id == R.id.nav_send) {
 
         }
 

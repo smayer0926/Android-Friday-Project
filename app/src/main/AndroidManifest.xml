@@ -29,6 +29,7 @@
             android:name=".WelcomePage2"
             android:label="@string/title_activity_welcome_page2"
             android:theme="@style/AppTheme.NoActionBar" />
+
         <activity android:name=".SignUpActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
