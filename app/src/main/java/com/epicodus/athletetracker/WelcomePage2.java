@@ -157,8 +157,9 @@ public class WelcomePage2 extends AppCompatActivity
             fragmentTransaction.commit();
         } else if (id == R.id.Home) {
             //Rework later... kind of badly done, but works
+           Intent intent = new Intent(this, WelcomePage2.class);
 
-            return true;
+            startActivity(intent);
 
         } else if (id == R.id.Contact) {
             clearFunction();
