@@ -1,4 +1,4 @@
-package com.epicodus.athletetracker;
+package com.epicodus.athletetracker.adapter;
 
 
 import android.content.Context;

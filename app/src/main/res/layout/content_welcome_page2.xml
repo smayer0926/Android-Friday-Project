@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.epicodus.athletetracker.WelcomePage2"
+    tools:context="com.epicodus.athletetracker.ui.WelcomePage2"
     tools:showIn="@layout/app_bar_welcome_page2"
     android:weightSum="1"
     android:id="@+id/frame">

@@ -1,4 +1,4 @@
-package com.epicodus.athletetracker;
+package com.epicodus.athletetracker.ui;
 
 
 import android.content.Intent;
@@ -23,7 +23,11 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.ArrayList;
+import com.epicodus.athletetracker.fragments.AboutAppFragment;
+import com.epicodus.athletetracker.fragments.BioFragment;
+import com.epicodus.athletetracker.fragments.ContactFragment;
+import com.epicodus.athletetracker.R;
+import com.epicodus.athletetracker.adapter.WorkoutAdapter;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -158,8 +162,7 @@ public class WelcomePage2 extends AppCompatActivity
         } else if (id == R.id.Home) {
             //Rework later... kind of badly done, but works
            Intent intent = new Intent(this, WelcomePage2.class);
-
-            startActivity(intent);
+           startActivity(intent);
 
         } else if (id == R.id.Contact) {
             clearFunction();

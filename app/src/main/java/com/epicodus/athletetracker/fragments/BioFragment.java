@@ -1,4 +1,4 @@
-package com.epicodus.athletetracker;
+package com.epicodus.athletetracker.fragments;
 
 
 import android.graphics.Typeface;
@@ -8,6 +8,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import com.epicodus.athletetracker.R;
 
 
 public class BioFragment extends Fragment {
