@@ -1,7 +1,6 @@
 package com.epicodus.athletetracker.ui.fragments;
 
-import android.content.Context;
-import android.net.Uri;
+
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -11,8 +10,9 @@ import android.widget.TextView;
 
 import com.epicodus.athletetracker.Models.Workout;
 import com.epicodus.athletetracker.R;
-import com.epicodus.athletetracker.ui.WorkoutDetailActivity;
 
+
+import org.jsoup.Jsoup;
 import org.parceler.Parcels;
 
 import butterknife.Bind;
@@ -21,9 +21,11 @@ import butterknife.ButterKnife;
 
 public class WorkoutDetailFragment extends Fragment  {
     @Bind(R.id.workoutHeader) TextView mWorkoutHeader;
-    @Bind(R.id.descriptionBox) TextView mDecriptionBox;
+    @Bind(R.id.descriptionBox) TextView mDescriptionBox;
 
-    private Workout mworkout;
+    private Workout mWorkout;
+
+
 
     public static WorkoutDetailFragment newInstance(Workout workout){
         WorkoutDetailFragment workoutDetailFragment = new WorkoutDetailFragment();
@@ -36,23 +38,27 @@ public class WorkoutDetailFragment extends Fragment  {
     @Override
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-        mworkout = Parcels.unwrap(getArguments().getParcelable("workout"));
-
-
+        mWorkout = Parcels.unwrap(getArguments().getParcelable("workout"));
 
     }
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         View view = inflater.inflate(R.layout.fragment_workout_detail, container, false);
-
         ButterKnife.bind(this, view);
-        String revise = mworkout.getmDescription();
-        String revisedDescription = revise.replaceAll("[^a-zA-Z0-9\\s]", "");
 
-        mDecriptionBox.setText(revisedDescription);
+        mWorkoutHeader.setText(mWorkout.getmName());
+
+        String changeWorkout = mWorkout.getmDescription();
+        String revisedDescription = html2text(changeWorkout);
+
+        mDescriptionBox.setText(revisedDescription);
 
         return view;
     }
 
-
+    public static String html2text(String html){
+        return Jsoup.parse(html).text();
+    }
 }

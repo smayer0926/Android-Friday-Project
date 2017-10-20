@@ -6,8 +6,8 @@ import org.parceler.Parcel;
 @Parcel
 public class Workout {
 
-    private String mName;
-    private String mDescription;
+    String mName;
+     String mDescription;
 
     public Workout(){}
 

@@ -14,6 +14,8 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -21,10 +23,17 @@ import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.epicodus.athletetracker.Services.NewsService;
+import com.epicodus.athletetracker.adapter.NewsListAdapter;
 import com.epicodus.athletetracker.ui.fragments.AboutAppFragment;
 import com.epicodus.athletetracker.ui.fragments.BioFragment;
 import com.epicodus.athletetracker.ui.fragments.ContactFragment;
 import com.epicodus.athletetracker.R;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.Response;
+
+import java.io.IOException;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -38,11 +47,6 @@ public class WelcomePage2 extends AppCompatActivity
     @Bind(R.id.story_list_view) ListView mWorkoutList;
     @Bind(R.id.news_about_health) TextView mNewsAboutHealth;
     @Bind(R.id.nav_view) NavigationView navigationView;
-
-
-//    private String [] stories = new String []{"I want there to be an API that populates stories about health here","DNA study provides insight into how to live longer","Child and teen obesity spreading across the globe"};
-//    private String [] url = new String [] {"xxxx","http://www.bbc.com/news/health-41588613","http://www.bbc.com/news/health-41550159"};
-
 
     public void clearFunction(){
         mWorkoutList.setAdapter(null);
@@ -68,20 +72,11 @@ public class WelcomePage2 extends AppCompatActivity
         mWelcomePage.setText("Welcome, " + name + "!");
         setSupportActionBar(mTools);
 
+
+
     //ADAPTER
 
 
-
-//        WorkoutAdapter adapter = new WorkoutAdapter(this, android.R.layout.simple_list_item_1, stories, url);
-//        mWorkoutList.setAdapter(adapter);
-//        mWorkoutList.setOnItemClickListener(new AdapterView.OnItemClickListener(){
-//            @Override
-//            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l){
-//                String workouts = ((TextView)view).getText().toString();
-//                Toast.makeText(WelcomePage2.this, workouts, Toast.LENGTH_LONG).show();
-//
-//            }
-//        });
 
 // DON'T DELETE YET
 //        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -99,8 +94,6 @@ public class WelcomePage2 extends AppCompatActivity
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
-
-//        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         View hView = navigationView.getHeaderView(0);
         TextView nav_user = (TextView)hView.findViewById(R.id.name_on_Nav);
         TextView nav_email = (TextView)hView.findViewById(R.id.email_on_Nav);
@@ -131,12 +124,8 @@ public class WelcomePage2 extends AppCompatActivity
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
         }
@@ -150,7 +139,6 @@ public class WelcomePage2 extends AppCompatActivity
 
         int id = item.getItemId();
 
-        //Handle the navigation if clicked, told which fragment to go to.
         if (id == R.id.About) {
             clearFunction();
             setTitle("About the Application");
@@ -181,7 +169,7 @@ public class WelcomePage2 extends AppCompatActivity
         } else if (id == R.id.Workout) {
             clearFunction();
             setTitle("My Workouts");
-            Intent WorkoutIntent = new Intent(WelcomePage2.this, WorkoutDetailActivity.class);
+            Intent WorkoutIntent = new Intent(WelcomePage2.this, WorkoutActivity.class);
             startActivity(WorkoutIntent);
 
         }
@@ -189,6 +177,7 @@ public class WelcomePage2 extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
 
 
 }
