@@ -1,21 +1,25 @@
 package com.epicodus.athletetracker.Models;
 
 
+import org.parceler.Parcel;
 
+@Parcel
 public class Workout {
 
-    private String mCommment;
-    private String mDate;
+    private String mName;
+    private String mDescription;
 
-    public Workout(String comment, String date){
-        this.mCommment = comment;
-        this.mDate = date;
+    public Workout(){}
+
+    public Workout(String name, String description){
+        this.mName = name;
+        this.mDescription = description;
     }
 
-    public String getmCommment(){
-        return mCommment;
+    public String getmName(){
+        return mName;
     }
-    public String getmDate(){
-        return mDate;
+    public String getmDescription(){
+        return mDescription;
     }
 }

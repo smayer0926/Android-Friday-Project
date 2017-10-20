@@ -13,6 +13,8 @@ import com.epicodus.athletetracker.R;
 import com.epicodus.athletetracker.Services.WorkoutService;
 
 
+import org.parceler.Parcels;
+
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -27,11 +29,11 @@ import okhttp3.Callback;
 import okhttp3.Response;
 
 public class WorkoutDetailActivity extends AppCompatActivity {
-
-
-    public ArrayList<Workout> workouts = new ArrayList<>();
-    @Bind(R.id.recyclerView) RecyclerView mRecyclerView;
+    @Bind(R.id.recyclerView) RecyclerView mRecycleView;
     private WorkoutListAdapter mListAdapter;
+    public ArrayList<Workout> workouts = new ArrayList<>();
+
+
 
 
     @Override
@@ -41,6 +43,10 @@ public class WorkoutDetailActivity extends AppCompatActivity {
 
         ButterKnife.bind(this);
         getWorkout();
+
+//        workouts = Parcels.unwrap(getIntent().getParcelableExtra("workout"));
+//        int startingPosition = getIntent().getIntExtra("position", 0);
+
 
     }
 
@@ -52,20 +58,19 @@ public class WorkoutDetailActivity extends AppCompatActivity {
                 e.printStackTrace();
 
             }
-
             @Override
-            public void onResponse(Call call, Response response) throws IOException {
-
+            public void onResponse(Call call, Response response) {
                 workouts = workoutService.processResults(response);
 
                 WorkoutDetailActivity.this.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
                         mListAdapter = new WorkoutListAdapter(getApplicationContext(), workouts);
-                        mRecyclerView.setAdapter(mListAdapter);
+                        mRecycleView.setAdapter(mListAdapter);
                         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(WorkoutDetailActivity.this);
-                        mRecyclerView.setLayoutManager(layoutManager);
-                        mRecyclerView.setHasFixedSize(true);
+                        mRecycleView.setLayoutManager(layoutManager);
+                        mRecycleView.setHasFixedSize(true);
+
                     }
                 });
             }

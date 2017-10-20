@@ -14,6 +14,7 @@ import android.widget.TextView;
 import com.epicodus.athletetracker.Models.Workout;
 import com.epicodus.athletetracker.R;
 import com.epicodus.athletetracker.ui.WorkoutDetailActivity;
+import com.epicodus.athletetracker.ui.fragments.WorkoutDetailFragment;
 
 import org.parceler.Parcels;
 
@@ -31,19 +32,22 @@ public class WorkoutListAdapter extends RecyclerView.Adapter<WorkoutListAdapter.
         mContext = context;
         mWorkouts = workouts;
     }
+
+
+
     @Override
     public WorkoutListAdapter.WorkoutViewHolder onCreateViewHolder(ViewGroup parent, int ViewType){
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.workout_list_item, parent, false);
-
-
         WorkoutViewHolder viewHolder = new WorkoutViewHolder(view);
         return viewHolder;
     }
+
 
     @Override
     public void onBindViewHolder(WorkoutListAdapter.WorkoutViewHolder holder, int position){
         holder.bindWorkout(mWorkouts.get(position));
     }
+
     @Override
     public int getItemCount(){
         return mWorkouts.size();
@@ -52,7 +56,6 @@ public class WorkoutListAdapter extends RecyclerView.Adapter<WorkoutListAdapter.
     public class WorkoutViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         @Bind(R.id.workoutComment)TextView mWorkOutComment;
         @Bind(R.id.workoutDate) TextView mWorkoutDate;
-
 
         private Context mContext;
 
@@ -64,10 +67,11 @@ public class WorkoutListAdapter extends RecyclerView.Adapter<WorkoutListAdapter.
             itemView.setOnClickListener(this);
         }
 
-        public void bindWorkout(Workout workouts ){
-            System.out.println(workouts.getmCommment());
-            mWorkOutComment.setText(workouts.getmCommment());
-            mWorkoutDate.setText(workouts.getmDate());
+        public void bindWorkout(Workout workouts){
+            String changeWorkout = workouts.getmName();
+            String revisedName = changeWorkout.replaceAll("[^a-zA-Z0-9\\s]", "");
+
+            mWorkOutComment.setText(revisedName);
 
         }
 
@@ -76,7 +80,7 @@ public class WorkoutListAdapter extends RecyclerView.Adapter<WorkoutListAdapter.
             int itemPosition = getLayoutPosition();
             Intent intent = new Intent(mContext, WorkoutDetailActivity.class);
             intent.putExtra("positon", itemPosition + "");
-            intent.putExtra("workouts", Parcels.wrap(mWorkouts));
+            intent.putExtra("workout", Parcels.wrap(mWorkouts));
             mContext.startActivity(intent);
 
         }

@@ -4,10 +4,7 @@
 
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <!-- To auto-complete the email text field in the login form with the user's emails -->
-    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
-    <uses-permission android:name="android.permission.READ_PROFILE" />
-    <uses-permission android:name="android.permission.READ_CONTACTS" />
+
 
     <application
         android:allowBackup="true"
@@ -19,7 +16,6 @@
         <activity
             android:name=".ui.MainActivity"
             android:theme="@style/NoActionBarTheme">
-            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -30,13 +26,6 @@
             android:label="@string/title_activity_welcome_page2"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".ui.SignUpActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.epicodus.athletetracker.ui.MainActivity" />
-        </activity>
-        <activity
-            android:name=".LoginActivity"
-            android:label="@string/title_activity_login">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.epicodus.athletetracker.ui.MainActivity" />

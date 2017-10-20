@@ -180,7 +180,7 @@ public class WelcomePage2 extends AppCompatActivity
             fragmentTransaction.commit();
         } else if (id == R.id.Workout) {
             clearFunction();
-            setTitle("Workouts");
+            setTitle("My Workouts");
             Intent WorkoutIntent = new Intent(WelcomePage2.this, WorkoutDetailActivity.class);
             startActivity(WorkoutIntent);
 

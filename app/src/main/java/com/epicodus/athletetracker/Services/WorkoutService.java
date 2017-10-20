@@ -23,7 +23,6 @@ import okhttp3.Response;
 
 public class WorkoutService {
     public static void findWorkout(Callback callback){
-        System.out.println("in findworkout");
         OkHttpClient client = new OkHttpClient.Builder().build();
 
         HttpUrl.Builder urlBuilder = HttpUrl.parse(Constants.WORKOUT_BASE_URL).newBuilder();
@@ -40,29 +39,27 @@ public class WorkoutService {
 
     public ArrayList<Workout> processResults(Response response){
         ArrayList<Workout> workoutsReady = new ArrayList<>();
-        System.out.println("in process results");
 
         try{
+
             String jsonData = response.body().string();
+            JSONObject workoutJSON  = new JSONObject(jsonData);
+            JSONArray workoutInformationJSON = workoutJSON.getJSONArray("results");
 
-            if(response.isSuccessful()){
-                System.out.println("in success");
-                JSONObject workoutJSON  = new JSONObject(jsonData);
-                System.out.println(workoutJSON);
-                JSONArray workoutInformationJSON = workoutJSON.getJSONArray("results");
-                System.out.println(workoutInformationJSON);
-                for(int i = 0; i< workoutInformationJSON.length(); i++){
-                    JSONObject movieStuffJSON = workoutInformationJSON.getJSONObject(i);
-                    String comment = movieStuffJSON.getString("comment");
-                    String creation = movieStuffJSON.getString("creation_date");
-                    System.out.println(comment);
+                for(int i = 2; i< workoutInformationJSON.length(); i++){
+                    JSONObject newWorkoutJSON = workoutInformationJSON.getJSONObject(i);
+                    String name = newWorkoutJSON.getString("name");
+                        if(newWorkoutJSON.getString("name") == ""){
+                           name = "New Workout";
+                         }
 
-                    Workout workouts = new Workout(comment, creation);
-                    workoutsReady.add(workouts);
-                    System.out.println(workouts);
+                    String description = newWorkoutJSON.getString("description");
+
+                    Workout workout = new Workout(name, description);
+                    workoutsReady.add(workout);
+
                 }
 
-            }
 
         }
         catch(IOException e){
@@ -71,6 +68,7 @@ public class WorkoutService {
         catch(JSONException e){
             e.printStackTrace();
         }
+        System.out.println("Here at the return " + workoutsReady);
         return workoutsReady;
     }
 }
