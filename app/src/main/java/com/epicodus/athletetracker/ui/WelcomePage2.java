@@ -18,16 +18,13 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.epicodus.athletetracker.fragments.AboutAppFragment;
-import com.epicodus.athletetracker.fragments.BioFragment;
-import com.epicodus.athletetracker.fragments.ContactFragment;
+import com.epicodus.athletetracker.ui.fragments.AboutAppFragment;
+import com.epicodus.athletetracker.ui.fragments.BioFragment;
+import com.epicodus.athletetracker.ui.fragments.ContactFragment;
 import com.epicodus.athletetracker.R;
-import com.epicodus.athletetracker.adapter.WorkoutAdapter;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -43,8 +40,8 @@ public class WelcomePage2 extends AppCompatActivity
     @Bind(R.id.nav_view) NavigationView navigationView;
 
 
-    private String [] stories = new String []{"I want there to be an API that populates stories about health here","DNA study provides insight into how to live longer","Child and teen obesity spreading across the globe"};
-    private String [] url = new String [] {"xxxx","http://www.bbc.com/news/health-41588613","http://www.bbc.com/news/health-41550159"};
+//    private String [] stories = new String []{"I want there to be an API that populates stories about health here","DNA study provides insight into how to live longer","Child and teen obesity spreading across the globe"};
+//    private String [] url = new String [] {"xxxx","http://www.bbc.com/news/health-41588613","http://www.bbc.com/news/health-41550159"};
 
 
     public void clearFunction(){
@@ -73,16 +70,18 @@ public class WelcomePage2 extends AppCompatActivity
 
     //ADAPTER
 
-        WorkoutAdapter adapter = new WorkoutAdapter(this, android.R.layout.simple_list_item_1, stories, url);
-        mWorkoutList.setAdapter(adapter);
-        mWorkoutList.setOnItemClickListener(new AdapterView.OnItemClickListener(){
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l){
-                String workouts = ((TextView)view).getText().toString();
-                Toast.makeText(WelcomePage2.this, workouts, Toast.LENGTH_LONG).show();
 
-            }
-        });
+
+//        WorkoutAdapter adapter = new WorkoutAdapter(this, android.R.layout.simple_list_item_1, stories, url);
+//        mWorkoutList.setAdapter(adapter);
+//        mWorkoutList.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+//            @Override
+//            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l){
+//                String workouts = ((TextView)view).getText().toString();
+//                Toast.makeText(WelcomePage2.this, workouts, Toast.LENGTH_LONG).show();
+//
+//            }
+//        });
 
 // DON'T DELETE YET
 //        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -179,11 +178,13 @@ public class WelcomePage2 extends AppCompatActivity
             FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
             fragmentTransaction.replace(R.id.frame, fragment2, "About Us");
             fragmentTransaction.commit();
-
-
+        } else if (id == R.id.Workout) {
+            clearFunction();
+            setTitle("Workouts");
+            Intent WorkoutIntent = new Intent(WelcomePage2.this, WorkoutDetailActivity.class);
+            startActivity(WorkoutIntent);
 
         }
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;

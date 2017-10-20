@@ -37,9 +37,6 @@
     <string name="bioPageText">This application was created for a project at Epicodus, where 4 weeks were spent to learn the basics of Android. A workout application seemed practical to make and like something that would be useful in the future. </string>
 
 
-
-
-
     <!--These are for the login page, don't touch yet-->
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
