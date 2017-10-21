@@ -29,7 +29,7 @@ public class WorkoutDetailActivity extends AppCompatActivity {
 
 
         mWorkouts = Parcels.unwrap(getIntent().getParcelableExtra("workout"));
-        int startingPosition = getIntent().getIntExtra("position", 0);
+        int startingPosition = Integer.parseInt(getIntent().getStringExtra("position"));
 
         adapterViewPager = new WorkoutPagerAdapter(getSupportFragmentManager(), mWorkouts);
         mViewPager.setAdapter(adapterViewPager);

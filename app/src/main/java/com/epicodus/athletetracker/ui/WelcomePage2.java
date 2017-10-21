@@ -14,8 +14,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -23,17 +22,19 @@ import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
 
+
+import com.epicodus.athletetracker.Models.News;
 import com.epicodus.athletetracker.Services.NewsService;
-import com.epicodus.athletetracker.adapter.NewsListAdapter;
 import com.epicodus.athletetracker.ui.fragments.AboutAppFragment;
 import com.epicodus.athletetracker.ui.fragments.BioFragment;
 import com.epicodus.athletetracker.ui.fragments.ContactFragment;
 import com.epicodus.athletetracker.R;
-import okhttp3.Call;
-import okhttp3.Callback;
-import okhttp3.Response;
 
-import java.io.IOException;
+
+import org.parceler.Parcels;
+
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -42,16 +43,16 @@ import butterknife.ButterKnife;
 public class WelcomePage2 extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    @Bind(R.id.toolbar) Toolbar mTools;
-    @Bind(R.id.welcome_page) TextView mWelcomePage;
-    @Bind(R.id.story_list_view) ListView mWorkoutList;
-    @Bind(R.id.news_about_health) TextView mNewsAboutHealth;
-    @Bind(R.id.nav_view) NavigationView navigationView;
+        @Bind(R.id.toolbar) Toolbar mTools;
+        @Bind(R.id.welcomePageHeader) TextView mWelcomePage;
+        ArrayList<News> mNews = new ArrayList<>();
+
+        @Bind(R.id.nav_view) NavigationView navigationView;
 
     public void clearFunction(){
-        mWorkoutList.setAdapter(null);
+
         mWelcomePage.setText("");
-        mNewsAboutHealth.setText("");
+
     }
 
 
@@ -63,6 +64,10 @@ public class WelcomePage2 extends AppCompatActivity
 
         ButterKnife.bind(this);
 
+
+//        Intent newsIntent = new Intent(WelcomePage2.this, NewsService.class);
+//        startActivity(newsIntent);
+
         Typeface welcomePageFont = Typeface.createFromAsset(getAssets(), "fonts/Aller_Rg.ttf");
         mWelcomePage.setTypeface(welcomePageFont);
 
@@ -72,9 +77,11 @@ public class WelcomePage2 extends AppCompatActivity
         mWelcomePage.setText("Welcome, " + name + "!");
         setSupportActionBar(mTools);
 
+//        mNews = Parcels.unwrap(getIntent().getParcelableExtra("news"));
+//        int startingPosition = getIntent().getIntExtra("position", 0);
 
 
-    //ADAPTER
+
 
 
 

@@ -31,9 +31,9 @@ import okhttp3.Response;
 
 public class WorkoutActivity extends AppCompatActivity {
     @Bind(R.id.recyclerView) RecyclerView mRecycleView;
-    private WorkoutListAdapter mListAdapter;
+    private WorkoutListAdapter mAdapter;
 
-    public ArrayList<Workout> workouts = new ArrayList<>();
+    public ArrayList<Workout> mWorkouts = new ArrayList<>();
 
 
     @Override
@@ -47,7 +47,7 @@ public class WorkoutActivity extends AppCompatActivity {
 
     private void getWorkout(){
         final WorkoutService workoutService = new WorkoutService();
-        WorkoutService.findWorkout(new Callback() {
+        workoutService.findWorkout(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
                 e.printStackTrace();
@@ -55,13 +55,13 @@ public class WorkoutActivity extends AppCompatActivity {
             }
             @Override
             public void onResponse(Call call, Response response) {
-                workouts = workoutService.processResults(response);
+                mWorkouts = workoutService.processResults(response);
 
                 WorkoutActivity.this.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        mListAdapter = new WorkoutListAdapter(getApplicationContext(), workouts);
-                        mRecycleView.setAdapter(mListAdapter);
+                        mAdapter = new WorkoutListAdapter(getApplicationContext(), mWorkouts);
+                        mRecycleView.setAdapter(mAdapter);
                         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(WorkoutActivity.this);
                         mRecycleView.setLayoutManager(layoutManager);
                         mRecycleView.setHasFixedSize(true);

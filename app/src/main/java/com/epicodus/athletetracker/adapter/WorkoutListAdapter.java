@@ -70,21 +70,14 @@ public class WorkoutListAdapter extends RecyclerView.Adapter<WorkoutListAdapter.
         }
 
         public void bindWorkout(Workout workouts){
-
-
-
-
-
             mWorkOutComment.setText(workouts.getmName());
-
         }
 
         @Override
         public void onClick(View v){
-            System.out.println("Insie on click!");
             int itemPosition = getLayoutPosition();
             Intent intent = new Intent(mContext, WorkoutDetailActivity.class);
-            intent.putExtra("positon", itemPosition + "");
+            intent.putExtra("position", itemPosition + "");
             intent.putExtra("workout", Parcels.wrap(mWorkouts));
             mContext.startActivity(intent);
 
