@@ -1,11 +1,15 @@
 package com.epicodus.athletetracker.ui;
 
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
+import android.net.Uri;
 import android.os.Bundle;
 
 
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentTransaction;
 
 import android.support.design.widget.NavigationView;
@@ -39,10 +43,12 @@ import java.util.ArrayList;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
+import static android.R.id.message;
+
 
 public class WelcomePage2 extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-
+        public Context context;
         @Bind(R.id.toolbar) Toolbar mTools;
         @Bind(R.id.welcomePageHeader) TextView mWelcomePage;
         ArrayList<News> mNews = new ArrayList<>();
@@ -85,15 +91,8 @@ public class WelcomePage2 extends AppCompatActivity
 
 
 
-// DON'T DELETE YET
-//        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-//        fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
-//            }
-//        });
+ //DON'T DELETE YET
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
