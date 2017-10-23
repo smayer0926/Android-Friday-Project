@@ -6,7 +6,7 @@ import org.parceler.Parcel;
 @Parcel
 public class Workout {
 
-    String mName;
+     String mName;
      String mDescription;
 
     public Workout(){}

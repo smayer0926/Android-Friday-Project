@@ -35,8 +35,6 @@ public class WorkoutListAdapter extends RecyclerView.Adapter<WorkoutListAdapter.
         mWorkouts = workouts;
     }
 
-
-
     @Override
     public WorkoutListAdapter.WorkoutViewHolder onCreateViewHolder(ViewGroup parent, int ViewType){
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.workout_list_item, parent, false);
@@ -56,7 +54,8 @@ public class WorkoutListAdapter extends RecyclerView.Adapter<WorkoutListAdapter.
     }
 
     public class WorkoutViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
-        @Bind(R.id.workoutComment)TextView mWorkOutComment;
+
+        @Bind(R.id.workoutComment) TextView mWorkOutComment;
 
 
         private Context mContext;

@@ -1,9 +1,5 @@
 package com.epicodus.athletetracker.Services;
 
-
-
-
-
 import com.epicodus.athletetracker.Constants;
 import com.epicodus.athletetracker.Models.Workout;
 
@@ -49,7 +45,7 @@ public class WorkoutService {
                 for(int i = 2; i< workoutInformationJSON.length(); i++){
                     JSONObject newWorkoutJSON = workoutInformationJSON.getJSONObject(i);
                     String name = newWorkoutJSON.getString("name");
-                        if(newWorkoutJSON.getString("name") == ""){
+                        if(newWorkoutJSON.getString("name").equals("")){
                            name = "New Workout";
                          }
 
@@ -68,7 +64,7 @@ public class WorkoutService {
         catch(JSONException e){
             e.printStackTrace();
         }
-        System.out.println("Here at the return " + workoutsReady);
+
         return workoutsReady;
     }
 }
