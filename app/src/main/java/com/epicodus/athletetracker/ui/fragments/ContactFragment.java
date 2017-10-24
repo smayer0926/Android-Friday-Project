@@ -1,6 +1,7 @@
-package com.epicodus.athletetracker.fragments;
+package com.epicodus.athletetracker.ui.fragments;
 
 
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -38,6 +39,20 @@ public class ContactFragment extends Fragment {
 
         Typeface contactHeader = Typeface.createFromAsset(getActivity().getAssets(),"fonts/Aller_Bd.ttf");
         mContactUsHeader.setTypeface(contactHeader);
+
+
+        FloatingActionButton fab = (FloatingActionButton) rootView.findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent Email = new Intent(Intent.ACTION_SEND);
+                Email.setType("text/email");
+                Email.putExtra(Intent.EXTRA_EMAIL, new String []{"smayer0926@gmail.com"});
+                Email.putExtra(Intent.EXTRA_SUBJECT, "Add your subject");
+                Email.putExtra(Intent.EXTRA_TEXT, "Dear Stephanie," + "");
+                startActivity(Intent.createChooser(Email, "Send Feedback:"));
+            }
+        });
 
 
         return rootView;

@@ -1,11 +1,15 @@
 package com.epicodus.athletetracker.ui;
 
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
+import android.net.Uri;
 import android.os.Bundle;
 
 
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentTransaction;
 
 import android.support.design.widget.NavigationView;
@@ -14,43 +18,47 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 
+
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.epicodus.athletetracker.fragments.AboutAppFragment;
-import com.epicodus.athletetracker.fragments.BioFragment;
-import com.epicodus.athletetracker.fragments.ContactFragment;
+
+import com.epicodus.athletetracker.Models.News;
+import com.epicodus.athletetracker.Services.NewsService;
+import com.epicodus.athletetracker.ui.fragments.AboutAppFragment;
+import com.epicodus.athletetracker.ui.fragments.BioFragment;
+import com.epicodus.athletetracker.ui.fragments.ContactFragment;
 import com.epicodus.athletetracker.R;
-import com.epicodus.athletetracker.adapter.WorkoutAdapter;
+
+
+import org.parceler.Parcels;
+
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
+import static android.R.id.message;
+
 
 public class WelcomePage2 extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+        public Context context;
+        @Bind(R.id.toolbar) Toolbar mTools;
+        @Bind(R.id.welcomePageHeader) TextView mWelcomePage;
+        ArrayList<News> mNews = new ArrayList<>();
 
-    @Bind(R.id.toolbar) Toolbar mTools;
-    @Bind(R.id.welcome_page) TextView mWelcomePage;
-    @Bind(R.id.story_list_view) ListView mWorkoutList;
-    @Bind(R.id.news_about_health) TextView mNewsAboutHealth;
-    @Bind(R.id.nav_view) NavigationView navigationView;
-
-
-    private String [] stories = new String []{"I want there to be an API that populates stories about health here","DNA study provides insight into how to live longer","Child and teen obesity spreading across the globe"};
-    private String [] url = new String [] {"xxxx","http://www.bbc.com/news/health-41588613","http://www.bbc.com/news/health-41550159"};
-
+        @Bind(R.id.nav_view) NavigationView navigationView;
 
     public void clearFunction(){
-        mWorkoutList.setAdapter(null);
+
         mWelcomePage.setText("");
-        mNewsAboutHealth.setText("");
+
     }
 
 
@@ -62,6 +70,10 @@ public class WelcomePage2 extends AppCompatActivity
 
         ButterKnife.bind(this);
 
+
+//        Intent newsIntent = new Intent(WelcomePage2.this, NewsService.class);
+//        startActivity(newsIntent);
+
         Typeface welcomePageFont = Typeface.createFromAsset(getAssets(), "fonts/Aller_Rg.ttf");
         mWelcomePage.setTypeface(welcomePageFont);
 
@@ -71,28 +83,16 @@ public class WelcomePage2 extends AppCompatActivity
         mWelcomePage.setText("Welcome, " + name + "!");
         setSupportActionBar(mTools);
 
-    //ADAPTER
+//        mNews = Parcels.unwrap(getIntent().getParcelableExtra("news"));
+//        int startingPosition = getIntent().getIntExtra("position", 0);
 
-        WorkoutAdapter adapter = new WorkoutAdapter(this, android.R.layout.simple_list_item_1, stories, url);
-        mWorkoutList.setAdapter(adapter);
-        mWorkoutList.setOnItemClickListener(new AdapterView.OnItemClickListener(){
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l){
-                String workouts = ((TextView)view).getText().toString();
-                Toast.makeText(WelcomePage2.this, workouts, Toast.LENGTH_LONG).show();
 
-            }
-        });
 
-// DON'T DELETE YET
-//        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-//        fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
-//            }
-//        });
+
+
+
+ //DON'T DELETE YET
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -100,8 +100,6 @@ public class WelcomePage2 extends AppCompatActivity
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
-
-//        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         View hView = navigationView.getHeaderView(0);
         TextView nav_user = (TextView)hView.findViewById(R.id.name_on_Nav);
         TextView nav_email = (TextView)hView.findViewById(R.id.email_on_Nav);
@@ -132,12 +130,8 @@ public class WelcomePage2 extends AppCompatActivity
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
         }
@@ -151,7 +145,6 @@ public class WelcomePage2 extends AppCompatActivity
 
         int id = item.getItemId();
 
-        //Handle the navigation if clicked, told which fragment to go to.
         if (id == R.id.About) {
             clearFunction();
             setTitle("About the Application");
@@ -179,15 +172,17 @@ public class WelcomePage2 extends AppCompatActivity
             FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
             fragmentTransaction.replace(R.id.frame, fragment2, "About Us");
             fragmentTransaction.commit();
-
-
+        } else if (id == R.id.Workout) {
+            clearFunction();
+            Intent WorkoutIntent = new Intent(WelcomePage2.this, WorkoutActivity.class);
+            startActivity(WorkoutIntent);
 
         }
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
 
 
 }

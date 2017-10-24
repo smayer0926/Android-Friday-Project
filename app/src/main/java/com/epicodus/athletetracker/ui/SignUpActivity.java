@@ -32,16 +32,16 @@ public class SignUpActivity extends AppCompatActivity {
         mSignUpButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
-                String email = mEmail.getText().toString();
-                String name = mName.getText().toString();
-                if(email.equals("") || name.equals("")){
-                    Toast.makeText(SignUpActivity.this, "Please fill out all the fields!", Toast.LENGTH_SHORT).show();
-                }else {
-                    Intent signUpIntent = new Intent(SignUpActivity.this, WelcomePage2.class);
-                    signUpIntent.putExtra("name", name);
-                    signUpIntent.putExtra("email", email);
-                    startActivity(signUpIntent);
-                }
+            String email = mEmail.getText().toString();
+            String name = mName.getText().toString();
+            if(email.equals("") || name.equals("")){
+                Toast.makeText(SignUpActivity.this, "Please fill out all the fields!", Toast.LENGTH_SHORT).show();
+            }else {
+                Intent signUpIntent = new Intent(SignUpActivity.this, WelcomePage2.class);
+                signUpIntent.putExtra("name", name);
+                signUpIntent.putExtra("email", email);
+                startActivity(signUpIntent);
+            }
             }
         });
     }

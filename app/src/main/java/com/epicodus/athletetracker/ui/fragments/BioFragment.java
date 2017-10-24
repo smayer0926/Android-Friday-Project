@@ -1,4 +1,4 @@
-package com.epicodus.athletetracker.fragments;
+package com.epicodus.athletetracker.ui.fragments;
 
 
 import android.graphics.Typeface;

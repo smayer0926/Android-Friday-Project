@@ -1,9 +1,8 @@
-package com.epicodus.athletetracker.fragments;
+package com.epicodus.athletetracker.ui.fragments;
 
 
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.support.constraint.solver.SolverVariable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;

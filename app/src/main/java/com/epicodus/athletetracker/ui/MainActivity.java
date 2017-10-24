@@ -9,7 +9,6 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.epicodus.athletetracker.LoginActivity;
 import com.epicodus.athletetracker.R;
 
 import butterknife.Bind;
@@ -41,11 +40,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         @Override
         public void onClick(View v){
-            if(v == mLogin){
-                Intent loginIntent = new Intent(MainActivity.this, LoginActivity.class);
-                startActivity(loginIntent);
-            }
-            else if(v == mSignUp){
+            if(v == mSignUp){
                 Intent signUpIntent = new Intent(MainActivity.this, SignUpActivity.class);
                 startActivity(signUpIntent);
             }else {
