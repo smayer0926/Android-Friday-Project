@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "453109143322",
+    "firebase_url": "https://athletetracker-dd802.firebaseio.com",
+    "project_id": "athletetracker-dd802",
+    "storage_bucket": "athletetracker-dd802.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:453109143322:android:72187dbd5727428b",
+        "android_client_info": {
+          "package_name": "com.epicodus.athletetracker"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "453109143322-md5qi1794nuibosj0sudunp4jglnbj9v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDCgr-qf_oq_zlOGS-Byqw2B_x7PsCoPkw"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
