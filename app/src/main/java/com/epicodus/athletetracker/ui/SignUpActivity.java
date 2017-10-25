@@ -20,7 +20,7 @@ public class SignUpActivity extends AppCompatActivity {
     @Bind(R.id.password) EditText mPassword;
     @Bind(R.id.name) EditText mName;
     @Bind(R.id.age) EditText mAge;
-    @Bind(R.id.SignUpLast) EditText mLastName;
+   
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
