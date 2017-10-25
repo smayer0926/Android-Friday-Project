@@ -71,8 +71,7 @@ public class WelcomePage2 extends AppCompatActivity
         ButterKnife.bind(this);
 
 
-//        Intent newsIntent = new Intent(WelcomePage2.this, NewsService.class);
-//        startActivity(newsIntent);
+
 
         Typeface welcomePageFont = Typeface.createFromAsset(getAssets(), "fonts/Aller_Rg.ttf");
         mWelcomePage.setTypeface(welcomePageFont);
@@ -82,16 +81,6 @@ public class WelcomePage2 extends AppCompatActivity
 
         mWelcomePage.setText("Welcome, " + name + "!");
         setSupportActionBar(mTools);
-
-//        mNews = Parcels.unwrap(getIntent().getParcelableExtra("news"));
-//        int startingPosition = getIntent().getIntExtra("position", 0);
-
-
-
-
-
-
- //DON'T DELETE YET
 
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
