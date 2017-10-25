@@ -27,6 +27,7 @@ _Images coming soon!_
 _To use this project, you will need to make sure to install Android Studio._
 * [Android Studio](https://developer.android.com/studio/index.html)
 * Once installed, you will be able to open the application.
+
 _To use this application, you will need to generate an API Key_
 * You will need to get an API Key from
   * [Wger](https://wger.de/en/software/api)
