@@ -50,6 +50,7 @@ public class WorkoutService {
                     String name = newWorkoutJSON.getString("name");
                     String description = newWorkoutJSON.getString("description");
 
+
                     Workout workout = new Workout(name, description);
                     workoutsReady.add(workout);
 
