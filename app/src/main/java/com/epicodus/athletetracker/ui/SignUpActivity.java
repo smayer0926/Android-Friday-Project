@@ -25,6 +25,12 @@ import butterknife.ButterKnife;
 
 public class SignUpActivity extends AppCompatActivity implements View.OnClickListener{
 
+    private FirebaseAuth mAuth;
+    private FirebaseAuth.AuthStateListener mAuthListener;
+
+    private ProgressDialog mAuthProgressDialog;
+    private String mExtraName;
+
     @Bind(R.id.sign_up_Button) Button mSignUpButton;
     @Bind(R.id.Email)EditText mEmail;
     @Bind(R.id.password) EditText mPassword;
@@ -33,10 +39,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
     @Bind(R.id.age) EditText mAge;
     @Bind(R.id.loginTextView) TextView mLoginTextView;
 
-    private FirebaseAuth mAuth;
-    private FirebaseAuth.AuthStateListener mAuthListener;
-    private ProgressDialog mAuthProgressDialog;
-    private String mExtraName;
+
 
 
     @Override
@@ -47,27 +50,15 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
         ButterKnife.bind(this);
 
         mAuth = FirebaseAuth.getInstance();
+
         createAuthStateListener();
         createAuthProgressDialog();
+
         mSignUpButton.setOnClickListener(this);
+        mLoginTextView.setOnClickListener(this);
 
     }
 
-//        mSignUpButton.setOnClickListener(new View.OnClickListener(){
-//            @Override
-//            public void onClick(View view){
-//            String email = mEmail.getText().toString();
-//            String name = mName.getText().toString();
-//            if(email.equals("") || name.equals("")){
-//                Toast.makeText(SignUpActivity.this, "Please fill out all the fields!", Toast.LENGTH_SHORT).show();
-//            }else {
-//                Intent signUpIntent = new Intent(SignUpActivity.this, WelcomePage2.class);
-//                signUpIntent.putExtra("name", name);
-//                signUpIntent.putExtra("email", email);
-//                startActivity(signUpIntent);
-//            }
-//            }
-//        });
     @Override
     public void onStart() {
         super.onStart();;
@@ -92,34 +83,38 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
             createNewUser();
         }
     }
+
     private void createNewUser(){
         mExtraName= mName.getText().toString().trim();
+        String name = mName.getText().toString().trim();
         final String email = mEmail.getText().toString().trim();
         String password = mPassword.getText().toString().trim();
-        System.out.println(password);
         String confirmPassword = mConfirmPassword.getText().toString().trim();
-        System.out.println(confirmPassword);
+
 
         boolean validEmail = isValidEmail(email);
         boolean validName = isValidName(mExtraName);
         boolean validPassword = isValidPassword(password, confirmPassword);
+
+
         if(!validEmail || !validName || !validPassword)return;
 
         mAuthProgressDialog.show();
 
-        mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                mAuthProgressDialog.dismiss();
+        mAuth.createUserWithEmailAndPassword(email, password)
+            .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                @Override
+                public void onComplete(@NonNull Task<AuthResult> task) {
+                    mAuthProgressDialog.dismiss();
 
-                if(task.isSuccessful()){
-                    createFirebaseUserProfile(task.getResult().getUser());
+                    if(task.isSuccessful()){
+                        createFirebaseUserProfile(task.getResult().getUser());
+                    }
+                    else{
+                        Toast.makeText(SignUpActivity.this, "Authentication Failed.", Toast.LENGTH_SHORT).show();
+                    }
                 }
-                else{
-                    Toast.makeText(SignUpActivity.this, "Authentication Failed.", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
+            });
     }
     private void createFirebaseUserProfile(final FirebaseUser user){
         UserProfileChangeRequest addProfileName = new UserProfileChangeRequest.Builder()

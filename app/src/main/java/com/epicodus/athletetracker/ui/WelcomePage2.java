@@ -8,6 +8,7 @@ import android.net.Uri;
 import android.os.Bundle;
 
 
+import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentTransaction;
@@ -21,6 +22,7 @@ import android.support.v7.app.AppCompatActivity;
 
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListView;
@@ -33,6 +35,8 @@ import com.epicodus.athletetracker.ui.fragments.AboutAppFragment;
 import com.epicodus.athletetracker.ui.fragments.BioFragment;
 import com.epicodus.athletetracker.ui.fragments.ContactFragment;
 import com.epicodus.athletetracker.R;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 
 import org.parceler.Parcels;
@@ -44,6 +48,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 
 import static android.R.id.message;
+import static com.epicodus.athletetracker.R.id.name;
 
 
 public class WelcomePage2 extends AppCompatActivity
@@ -55,20 +60,38 @@ public class WelcomePage2 extends AppCompatActivity
 
         @Bind(R.id.nav_view) NavigationView navigationView;
 
+        private FirebaseAuth mAuth;
+        private FirebaseAuth.AuthStateListener mAuthListener;
+
+
+
     public void clearFunction(){
 
         mWelcomePage.setText("");
 
     }
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome_page2);
 
         ButterKnife.bind(this);
+
+
+        mAuth = FirebaseAuth.getInstance();
+        mAuthListener = new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                FirebaseUser user = firebaseAuth.getCurrentUser();
+                if (user != null) {
+                    mWelcomePage.setText("Welcome, " + user.getDisplayName() + "!");
+                }else {
+
+                }
+            }
+        };
 
 
 
@@ -98,6 +121,12 @@ public class WelcomePage2 extends AppCompatActivity
 
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.welcome_page2, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
 
 
     @Override
@@ -110,23 +139,39 @@ public class WelcomePage2 extends AppCompatActivity
         }
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.welcome_page2, menu);
-        return true;
-    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
 
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_logout) {
+            logout();
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
+
+    @Override
+    public void onStart(){
+        super.onStart();
+        mAuth.addAuthStateListener(mAuthListener);
+    }
+    @Override
+    public void onStop(){
+        super.onStop();
+        if(mAuthListener != null){
+            mAuth.removeAuthStateListener(mAuthListener);
+        }
+    }
+
+    private void logout(){
+        FirebaseAuth.getInstance().signOut();
+        Intent intent = new Intent(WelcomePage2.this, LoginActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+        finish();
+    }
+
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
