@@ -82,11 +82,17 @@ public class WelcomePage2 extends AppCompatActivity
 
         mAuth = FirebaseAuth.getInstance();
         mAuthListener = new FirebaseAuth.AuthStateListener() {
+            View hView = navigationView.getHeaderView(0);
+            TextView nav_user = (TextView)hView.findViewById(R.id.name_on_Nav);
+            TextView nav_email = (TextView)hView.findViewById(R.id.email_on_Nav);
+
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
                 if (user != null) {
                     mWelcomePage.setText("Welcome, " + user.getDisplayName() + "!");
+                    nav_user.setText(user.getDisplayName());
+                    nav_email.setText(user.getEmail());
                 }else {
 
                 }
@@ -99,10 +105,11 @@ public class WelcomePage2 extends AppCompatActivity
         Typeface welcomePageFont = Typeface.createFromAsset(getAssets(), "fonts/Aller_Rg.ttf");
         mWelcomePage.setTypeface(welcomePageFont);
 
+
+
         String name = getIntent().getStringExtra("name");
         String email = getIntent().getStringExtra("email");
 
-        mWelcomePage.setText("Welcome, " + name + "!");
         setSupportActionBar(mTools);
 
 
@@ -112,11 +119,9 @@ public class WelcomePage2 extends AppCompatActivity
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
-        View hView = navigationView.getHeaderView(0);
-        TextView nav_user = (TextView)hView.findViewById(R.id.name_on_Nav);
-        TextView nav_email = (TextView)hView.findViewById(R.id.email_on_Nav);
-        nav_user.setText(name);
-        nav_email.setText(email);
+
+
+
         navigationView.setNavigationItemSelectedListener(this);
 
     }

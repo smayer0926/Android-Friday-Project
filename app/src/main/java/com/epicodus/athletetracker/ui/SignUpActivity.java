@@ -109,6 +109,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
 
                     if(task.isSuccessful()){
                         createFirebaseUserProfile(task.getResult().getUser());
+                        sendToWelcome();
                     }
                     else{
                         Toast.makeText(SignUpActivity.this, "Authentication Failed.", Toast.LENGTH_SHORT).show();
@@ -176,5 +177,13 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
             return false;
         }
         return true;
+    }
+    private void sendToWelcome(){
+        String name = mName.getText().toString().trim();
+        String email = mEmail.getText().toString().trim();
+        Intent sentIntent = new Intent(SignUpActivity.this, WelcomePage2.class);
+        sentIntent.putExtra("name", name);
+        sentIntent.putExtra("email", email);
+        startActivity(sentIntent);
     }
 }

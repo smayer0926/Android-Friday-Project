@@ -32,6 +32,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         mSignUp.setOnClickListener(this);
         mLogin.setOnClickListener(this);
+
         Typeface newFont = Typeface.createFromAsset(getAssets(), "fonts/Aller_Bd.ttf");
         mMainText.setTypeface(newFont);
 
