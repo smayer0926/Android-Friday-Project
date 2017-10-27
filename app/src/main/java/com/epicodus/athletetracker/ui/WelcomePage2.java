@@ -59,6 +59,7 @@ public class WelcomePage2 extends AppCompatActivity
         @Bind(R.id.welcomePageHeader) TextView mWelcomePage;
         ArrayList<News> mNews = new ArrayList<>();
 
+
         @Bind(R.id.nav_view) NavigationView navigationView;
 
         private FirebaseAuth mAuth;
@@ -67,10 +68,9 @@ public class WelcomePage2 extends AppCompatActivity
 
 
     public void clearFunction(){
-
         mWelcomePage.setText("");
-
     }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -108,8 +108,6 @@ public class WelcomePage2 extends AppCompatActivity
 
 
 
-        String name = getIntent().getStringExtra("name");
-        String email = getIntent().getStringExtra("email");
 
         setSupportActionBar(mTools);
 
@@ -193,7 +191,6 @@ public class WelcomePage2 extends AppCompatActivity
             fragmentTransaction.replace(R.id.frame, fragment, "About the Application");
             fragmentTransaction.commit();
         } else if (id == R.id.Home) {
-            //Rework later... kind of badly done, but works
            Intent intent = new Intent(this, WelcomePage2.class);
            startActivity(intent);
 
@@ -225,7 +222,5 @@ public class WelcomePage2 extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
-
-
 
 }
