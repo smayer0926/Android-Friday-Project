@@ -27,7 +27,7 @@ _This application will allow a user to find specific workouts and save those wor
 
 ![Looking up results](images/signup.png)
 
-![Looking up results](images/login.png)
+![Looking up results](images/loggedinpng.png)
 
 ![Looking up results](images/workouts.png)
 
