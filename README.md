@@ -16,11 +16,22 @@
 
 ## Description
 
-_This application will allow people to sign up for an account and then be able to track different aspects of workouts, including how far they've gone and the amount of calories that have been burned._
+_This application will allow a user to find specific workouts and save those workouts. The user will then be able to retrieve those workouts at a later time when they may want to use them. Some of the workouts include links to videos that may help them learn the proper workout._
 
 
 ## View Of Application
-_Images coming soon!_
+
+![Image of Main page](images/screenshot.png)
+
+![Looking up results](images/screenshot1.png)
+
+![Looking up results](images/signup.png)
+
+![Looking up results](images/login.png)
+
+![Looking up results](images/workouts.png)
+
+![Looking up results](images/drawer.png)
 
 
 ## Setup Requirements
@@ -39,10 +50,8 @@ _To use this project, you will need to make sure to install Android Studio._
 
 ## User Stories
 * As a user, I want to be able to create an account for the application.
-* As a user, I want to be able to contact the owner of the application if something goes wrong.
-* As a user, I want to be able to login to a previously created account. (Not yet functional)
-* As a user, I want to be able to see how many calories have been burned in a day. (Not yet functional)
-* As a user, I want to be able to see how far I walk/ran in a day. (Not yet functional)
+* As a user, I want to be able to login to an account that was previously created.
+* As a user, I want to be able to find workouts that could help improve my daily workout.
 * As a user, I want to be able to look at the latest of information that there is when it comes to diet. (Not yet functional)
 
 
@@ -50,9 +59,7 @@ _To use this project, you will need to make sure to install Android Studio._
 _If there are any questions or concerns, please contact me at smayer0926@gmail.com_
 
 ## Known Bugs
-* I am unable to currently get peoples names onto the DrawerLayout.
-* Login doesn't work, yet!
-* Not able to hold onto any information, yet. So if the Home button is clicked in the DrawerLayout it will say "Welcome, null". This will get fixed soon.
+* No known bugs at this time.
 
 
 ## Technologies Used
