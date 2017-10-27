@@ -13,6 +13,10 @@
             android:title="Workout"
             />
         <item
+            android:id="@+id/workoutSaved"
+            android:title="Saved Workouts"
+            />
+        <item
             android:id="@+id/About"
             android:title="About"
             />
@@ -22,6 +26,7 @@
         <item
             android:id="@+id/Contact"
             android:title="Contact Us" />
+
 
 
     </group>

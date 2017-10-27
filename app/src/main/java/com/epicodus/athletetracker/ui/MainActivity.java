@@ -32,6 +32,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         mSignUp.setOnClickListener(this);
         mLogin.setOnClickListener(this);
+
         Typeface newFont = Typeface.createFromAsset(getAssets(), "fonts/Aller_Bd.ttf");
         mMainText.setTypeface(newFont);
 
@@ -43,7 +44,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             if(v == mSignUp){
                 Intent signUpIntent = new Intent(MainActivity.this, SignUpActivity.class);
                 startActivity(signUpIntent);
-            }else {
+            }else if(v == mLogin){
+                Intent loginIntent = new Intent(MainActivity.this, LoginActivity.class);
+                startActivity(loginIntent);
+            }
+
+            else {
                 Toast errorToast = Toast.makeText(this, "There was an error, try again", Toast.LENGTH_SHORT);
                 errorToast.show();
                 Intent errorIntent = new Intent(MainActivity.this, MainActivity.class);

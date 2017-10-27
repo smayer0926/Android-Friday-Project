@@ -20,35 +20,29 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".ui.WelcomePage2"
             android:label="@string/title_activity_welcome_page2"
-            android:theme="@style/AppTheme.NoActionBar">
-
-        </activity>
-
-
-
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".ui.SignUpActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.epicodus.athletetracker.ui.MainActivity" />
         </activity>
-
-
         <activity android:name=".ui.WorkoutActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.epicodus.athletetracker.ui.MainActivity" />
-
-
-            </activity>
-
-
+        </activity>
         <activity android:name=".ui.WorkoutDetailActivity">
             <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
                 android:label="Workouts"
+                android:value="com.epicodus.athletetracker.ui.MainActivity" />
+        </activity>
+        <activity android:name=".ui.LoginActivity" />
+        <activity android:name=".ui.SavedWorkoutListActivity">
+            <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.epicodus.athletetracker.ui.MainActivity" />
         </activity>

@@ -8,6 +8,7 @@ import android.net.Uri;
 import android.os.Bundle;
 
 
+import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentTransaction;
@@ -21,6 +22,7 @@ import android.support.v7.app.AppCompatActivity;
 
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListView;
@@ -28,11 +30,14 @@ import android.widget.TextView;
 
 
 import com.epicodus.athletetracker.Models.News;
+import com.epicodus.athletetracker.Models.Workout;
 import com.epicodus.athletetracker.Services.NewsService;
 import com.epicodus.athletetracker.ui.fragments.AboutAppFragment;
 import com.epicodus.athletetracker.ui.fragments.BioFragment;
 import com.epicodus.athletetracker.ui.fragments.ContactFragment;
 import com.epicodus.athletetracker.R;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 
 import org.parceler.Parcels;
@@ -44,6 +49,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 
 import static android.R.id.message;
+import static com.epicodus.athletetracker.R.id.name;
 
 
 public class WelcomePage2 extends AppCompatActivity
@@ -53,45 +59,57 @@ public class WelcomePage2 extends AppCompatActivity
         @Bind(R.id.welcomePageHeader) TextView mWelcomePage;
         ArrayList<News> mNews = new ArrayList<>();
 
+
         @Bind(R.id.nav_view) NavigationView navigationView;
 
+        private FirebaseAuth mAuth;
+        private FirebaseAuth.AuthStateListener mAuthListener;
+
+
+
     public void clearFunction(){
-
         mWelcomePage.setText("");
-
     }
-
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome_page2);
 
         ButterKnife.bind(this);
 
 
-//        Intent newsIntent = new Intent(WelcomePage2.this, NewsService.class);
-//        startActivity(newsIntent);
+        mAuth = FirebaseAuth.getInstance();
+        mAuthListener = new FirebaseAuth.AuthStateListener() {
+            View hView = navigationView.getHeaderView(0);
+            TextView nav_user = (TextView)hView.findViewById(R.id.name_on_Nav);
+            TextView nav_email = (TextView)hView.findViewById(R.id.email_on_Nav);
+
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                FirebaseUser user = firebaseAuth.getCurrentUser();
+                if (user != null) {
+                    mWelcomePage.setText("Welcome, " + user.getDisplayName() + "!");
+                    nav_user.setText(user.getDisplayName());
+                    nav_email.setText(user.getEmail());
+                }else {
+
+                }
+            }
+        };
+
+
+
 
         Typeface welcomePageFont = Typeface.createFromAsset(getAssets(), "fonts/Aller_Rg.ttf");
         mWelcomePage.setTypeface(welcomePageFont);
 
-        String name = getIntent().getStringExtra("name");
-        String email = getIntent().getStringExtra("email");
 
-        mWelcomePage.setText("Welcome, " + name + "!");
+
+
         setSupportActionBar(mTools);
-
-//        mNews = Parcels.unwrap(getIntent().getParcelableExtra("news"));
-//        int startingPosition = getIntent().getIntExtra("position", 0);
-
-
-
-
-
-
- //DON'T DELETE YET
 
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -100,15 +118,19 @@ public class WelcomePage2 extends AppCompatActivity
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
-        View hView = navigationView.getHeaderView(0);
-        TextView nav_user = (TextView)hView.findViewById(R.id.name_on_Nav);
-        TextView nav_email = (TextView)hView.findViewById(R.id.email_on_Nav);
-        nav_user.setText(name);
-        nav_email.setText(email);
+
+
+
         navigationView.setNavigationItemSelectedListener(this);
 
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.welcome_page2, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
 
 
     @Override
@@ -121,23 +143,39 @@ public class WelcomePage2 extends AppCompatActivity
         }
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.welcome_page2, menu);
-        return true;
-    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
 
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_logout) {
+            logout();
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
+
+    @Override
+    public void onStart(){
+        super.onStart();
+        mAuth.addAuthStateListener(mAuthListener);
+    }
+    @Override
+    public void onStop(){
+        super.onStop();
+        if(mAuthListener != null){
+            mAuth.removeAuthStateListener(mAuthListener);
+        }
+    }
+
+    private void logout(){
+        FirebaseAuth.getInstance().signOut();
+        Intent intent = new Intent(WelcomePage2.this, LoginActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+        finish();
+    }
+
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
@@ -153,7 +191,6 @@ public class WelcomePage2 extends AppCompatActivity
             fragmentTransaction.replace(R.id.frame, fragment, "About the Application");
             fragmentTransaction.commit();
         } else if (id == R.id.Home) {
-            //Rework later... kind of badly done, but works
            Intent intent = new Intent(this, WelcomePage2.class);
            startActivity(intent);
 
@@ -176,13 +213,14 @@ public class WelcomePage2 extends AppCompatActivity
             clearFunction();
             Intent WorkoutIntent = new Intent(WelcomePage2.this, WorkoutActivity.class);
             startActivity(WorkoutIntent);
-
+        }else if (id == R.id.workoutSaved){
+            clearFunction();
+            Intent newIntent = new Intent(WelcomePage2.this, SavedWorkoutListActivity.class);
+            startActivity(newIntent);
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
-
-
 
 }
