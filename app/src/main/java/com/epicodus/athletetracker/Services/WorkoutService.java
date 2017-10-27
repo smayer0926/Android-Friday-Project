@@ -1,5 +1,8 @@
 package com.epicodus.athletetracker.Services;
 
+import android.content.Intent;
+import android.net.Uri;
+
 import com.epicodus.athletetracker.Constants;
 import com.epicodus.athletetracker.Models.Workout;
 
@@ -16,6 +19,9 @@ import okhttp3.HttpUrl;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
+
+import static android.R.attr.description;
+import static android.R.attr.start;
 
 public class WorkoutService {
     public static void findWorkout(Callback callback){
