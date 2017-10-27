@@ -5,6 +5,11 @@
     android:layout_height="match_parent"
     tools:context="com.epicodus.athletetracker.ui.fragments.WorkoutDetailFragment">
 
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/background"
+        android:scaleType="centerCrop"/>
     <Button
         android:id="@+id/workoutSaved"
         android:layout_width="0dp"
@@ -21,15 +26,10 @@
         app:layout_constraintRight_toRightOf="parent"
         android:textAllCaps="false"
         android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp" />
+        android:layout_marginEnd="8dp"
+        android:background="#70656668"
+        android:textColor="#FFFFFF"/>
 
-    <!--<LinearLayout-->
-        <!--android:id="@+id/linearLayout"-->
-        <!--android:layout_width="368dp"-->
-        <!--android:layout_height="495dp"-->
-        <!--android:orientation="vertical"-->
-        <!--tools:layout_editor_absoluteX="-143dp"-->
-        <!--tools:layout_editor_absoluteY="0dp">-->
 
         <TextView
             android:id="@+id/workoutHeader"
@@ -42,6 +42,8 @@
             android:text="Workout"
             android:textAlignment="center"
             android:textSize="25dp"
+            android:textColor="@color/light"
+            android:textStyle="bold"
 
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -55,6 +57,7 @@
         <TextView
             android:id="@+id/descriptionBox"
             android:layout_width="0dp"
+            android:textColor="@color/light"
             android:layout_height="wrap_content"
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
@@ -70,6 +73,6 @@
             app:layout_constraintHorizontal_bias="0.0" />
 
 
-    <!--</LinearLayout>-->
+
 </android.support.constraint.ConstraintLayout>
 

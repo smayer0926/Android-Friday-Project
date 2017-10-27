@@ -11,6 +11,8 @@ import com.epicodus.athletetracker.R;
 import com.epicodus.athletetracker.adapter.FirebaseWorkoutViewHolder;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -31,6 +33,7 @@ public class SavedWorkoutListActivity extends AppCompatActivity {
 
 //        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 //        String uid = user.getUid();
+//        System.out.println(uid);
 
         mWorkoutReference = FirebaseDatabase
                 .getInstance()
