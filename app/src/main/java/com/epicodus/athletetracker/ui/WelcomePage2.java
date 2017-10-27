@@ -30,6 +30,7 @@ import android.widget.TextView;
 
 
 import com.epicodus.athletetracker.Models.News;
+import com.epicodus.athletetracker.Models.Workout;
 import com.epicodus.athletetracker.Services.NewsService;
 import com.epicodus.athletetracker.ui.fragments.AboutAppFragment;
 import com.epicodus.athletetracker.ui.fragments.BioFragment;
@@ -215,7 +216,10 @@ public class WelcomePage2 extends AppCompatActivity
             clearFunction();
             Intent WorkoutIntent = new Intent(WelcomePage2.this, WorkoutActivity.class);
             startActivity(WorkoutIntent);
-
+        }else if (id == R.id.workoutSaved){
+            clearFunction();
+            Intent newIntent = new Intent(WelcomePage2.this, SavedWorkoutListActivity.class);
+            startActivity(newIntent);
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

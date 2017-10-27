@@ -10,7 +10,7 @@ public class Constants {
         public static final String NEWS_BASE_URL = "https://newsapi.org/v1/articles?source=new-scientist";
         public static final String NEWS_KEY_QUERY = "apiKey";
 
-        public static final String FIREBASE_CHILD_WORKOUTS_SAVED = "workouts";
+        public static final String FIREBASE_CHILD_WORKOUTS_SAVED = "workout";
 
 }
 
