@@ -35,6 +35,16 @@ _This application will allow a user to find specific workouts and save those wor
 
 
 ## Setup Requirements
+_To use this project, you will need to make sure to install Android Studio._
+* [Android Studio](https://developer.android.com/studio/index.html)
+* Once installed, you will be able to open the application.
+
+_To use this application, you will need to generate an API Key_
+* You will need to get an API Key from
+  * [Wger](https://wger.de/en/software/api)
+  * Click on the button that says "Generate API KEY"
+  * All documentation on how to use the API is also present there.
+
 * Clone the repo from git hub using:
 ````
 $ git clone https://github.com/smayer0926/Android-Friday-Project.git
@@ -42,9 +52,7 @@ $ git clone https://github.com/smayer0926/Android-Friday-Project.git
 * Open the application in Android Studio.
 * Experiment!
 
-_To use this project, you will need to make sure to install Android Studio._
-* [Android Studio](https://developer.android.com/studio/index.html)
-* Once installed, you will be able to open the application.
+
 
 * Open in your favorite emulator.
 
@@ -59,7 +67,9 @@ _To use this project, you will need to make sure to install Android Studio._
 _If there are any questions or concerns, please contact me at smayer0926@gmail.com_
 
 ## Known Bugs
+
 * No known bugs at this time.
+
 
 
 ## Technologies Used
