@@ -13,6 +13,8 @@ import android.widget.Toast;
 import com.epicodus.athletetracker.Constants;
 import com.epicodus.athletetracker.Models.Workout;
 import com.epicodus.athletetracker.R;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -70,10 +72,17 @@ public class WorkoutDetailFragment extends Fragment implements View.OnClickListe
     @Override
     public void onClick(View v){
         if(v == mSaveWorkoutButton){
+            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+            String uid = user.getUid();
             DatabaseReference workoutRef = FirebaseDatabase
                     .getInstance()
-                    .getReference(Constants.FIREBASE_CHILD_WORKOUTS_SAVED);
-            workoutRef.push().setValue(mWorkout);
+                    .getReference(Constants.FIREBASE_CHILD_WORKOUTS_SAVED)
+                    .child(uid);
+            DatabaseReference pushRef = workoutRef.push();
+//            workoutRef.push().setValue(mWorkout);
+            String pushId = pushRef.getKey();
+            mWorkout.setPushId(pushId);
+            pushRef.setValue(mWorkout);
             Toast.makeText(getContext(), "Saved", Toast.LENGTH_SHORT).show();
         }
     }

@@ -9,6 +9,7 @@ public class Workout {
      String mName;
      String mDescription;
      String index;
+     String pushId;
 
     public Workout(){}
 
@@ -29,5 +30,9 @@ public class Workout {
     }
     public void setIndex(String index){
         this.index = index;
+    }
+
+    public void setPushId(String pushId) {
+        this.pushId = pushId;
     }
 }
