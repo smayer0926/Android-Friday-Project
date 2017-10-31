@@ -63,7 +63,7 @@ public class SavedWorkoutListActivity extends AppCompatActivity implements OnSta
 
         mFirebaseAdapter = new FirebaseWorkoutListAdapter(Workout.class,
                 R.layout.workout_list_item_drag, FirebaseWorkoutViewHolder.class,
-                mWorkoutReference, this, this);
+                query, this, this);
 
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
