@@ -11,6 +11,7 @@ public class Constants {
         public static final String NEWS_KEY_QUERY = "apiKey";
 
         public static final String FIREBASE_CHILD_WORKOUTS_SAVED = "workout";
+        public static final String FIREBASE_QUERY_INDEX = "index";
 
 }
 

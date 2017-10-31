@@ -22,48 +22,25 @@ import org.parceler.Parcels;
 
 import java.util.ArrayList;
 
-public class FirebaseWorkoutViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener  {
+public class FirebaseWorkoutViewHolder extends RecyclerView.ViewHolder   {
     View mView;
     Context mContext;
+    public TextView mWorkoutTextView;
 
     public FirebaseWorkoutViewHolder(View itemView){
         super(itemView);
         mView = itemView;
         mContext= itemView.getContext();
-        itemView.setOnClickListener(this);
+
     }
 
     public void bindWorkout(Workout workout){
-        TextView workoutTextView = (TextView) mView.findViewById(R.id.workoutComment);
+        mWorkoutTextView = (TextView) mView.findViewById(R.id.workoutComment);
+        mWorkoutTextView.setText(workout.getmName());
 
 
-        workoutTextView.setText(workout.getmName());
     }
 
-    @Override
-    public void onClick(View view){
-        final ArrayList<Workout> workouts = new ArrayList<>();
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference(Constants.FIREBASE_CHILD_WORKOUTS_SAVED);
-        ref.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                for(DataSnapshot snapshot : dataSnapshot.getChildren()){
-                    workouts.add(snapshot.getValue(Workout.class));
-                }
-                int itemPosition = getLayoutPosition();
 
-                Intent newIntent = new Intent (mContext, WorkoutDetailActivity.class);
-                newIntent.putExtra("position", itemPosition + "");
-                newIntent.putExtra("workout", Parcels.wrap(workouts));
-
-                mContext.startActivity(newIntent);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-    }
 
 }
