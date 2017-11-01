@@ -70,7 +70,7 @@ public class WorkoutService {
         catch(JSONException e){
             e.printStackTrace();
         }
-
+        System.out.println("here" + workoutsReady);
         return workoutsReady;
     }
 }

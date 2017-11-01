@@ -5,19 +5,11 @@
     android:layout_height="match_parent"
     tools:context="com.epicodus.athletetracker.ui.WorkoutActivity">
 
-
-    <ImageView
+    <fragment
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/background"
-        android:scaleType="centerCrop"/>
-
-
-    <android.support.v7.widget.RecyclerView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/recycleViewer"/>
-
-
+        android:id="@+id/fragmentWorkoutList"
+        android:name="com.epicodus.athletetracker.ui.fragments.WorkoutListFragment"
+        tools:layout="@layout/fragment_workout_list"/>
 
 </RelativeLayout>

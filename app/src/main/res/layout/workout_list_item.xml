@@ -12,10 +12,7 @@
         android:background="@drawable/border"
         android:orientation="vertical"
         android:padding="10dp"
-        android:paddingBottom="15dp"
-
-
-        >
+        android:paddingBottom="15dp">
 
 
         <TextView
