@@ -8,12 +8,15 @@ public class Workout {
 
      String mName;
      String mDescription;
+     String index;
+     String pushId;
 
     public Workout(){}
 
     public Workout(String name, String description){
         this.mName = name;
         this.mDescription = description;
+        this.index = "not_specified";
     }
 
     public String getmName(){
@@ -21,5 +24,15 @@ public class Workout {
     }
     public String getmDescription(){
         return mDescription;
+    }
+    public String getIndex() {
+        return index;
+    }
+    public void setIndex(String index){
+        this.index = index;
+    }
+
+    public void setPushId(String pushId) {
+        this.pushId = pushId;
     }
 }
