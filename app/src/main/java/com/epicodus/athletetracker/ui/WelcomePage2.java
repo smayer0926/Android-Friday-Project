@@ -29,9 +29,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 
-import com.epicodus.athletetracker.Models.News;
-import com.epicodus.athletetracker.Models.Workout;
-import com.epicodus.athletetracker.Services.NewsService;
+
 import com.epicodus.athletetracker.ui.fragments.AboutAppFragment;
 import com.epicodus.athletetracker.ui.fragments.BioFragment;
 import com.epicodus.athletetracker.ui.fragments.ContactFragment;
@@ -57,7 +55,6 @@ public class WelcomePage2 extends AppCompatActivity
         public Context context;
         @Bind(R.id.toolbar) Toolbar mTools;
         @Bind(R.id.welcomePageHeader) TextView mWelcomePage;
-        ArrayList<News> mNews = new ArrayList<>();
 
 
         @Bind(R.id.nav_view) NavigationView navigationView;

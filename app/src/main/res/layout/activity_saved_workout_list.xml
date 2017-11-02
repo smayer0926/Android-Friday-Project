@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.epicodus.athletetracker.ui.WorkoutActivity">
+    tools:context=".ui.WorkoutActivity"
+    >
+
 
 
     <fragment
+        android:id="@+id/fragmentWorkoutList"
+        android:name="com.epicodus.athletetracker.ui.fragments.SavedWorkoutListFragment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/fragmentWorkoutList"
-        android:name="com.epicodus.athletetracker.ui.fragments.WorkoutListFragment"
-        tools:layout="@layout/fragment_workout_list"/>
+        tools:layout="@layout/fragment_workout_list" />
 
 </RelativeLayout>

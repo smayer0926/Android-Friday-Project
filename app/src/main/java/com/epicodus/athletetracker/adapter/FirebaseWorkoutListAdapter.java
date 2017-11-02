@@ -3,12 +3,18 @@ package com.epicodus.athletetracker.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.MotionEventCompat;
 import android.view.MotionEvent;
 import android.view.View;
 
+import com.epicodus.athletetracker.Constants;
 import com.epicodus.athletetracker.Models.Workout;
+import com.epicodus.athletetracker.R;
 import com.epicodus.athletetracker.ui.WorkoutDetailActivity;
+import com.epicodus.athletetracker.ui.fragments.WorkoutDetailFragment;
 import com.epicodus.athletetracker.util.ItemTouchHelperAdapter;
 import com.epicodus.athletetracker.util.OnStartDragListener;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
@@ -30,7 +36,7 @@ public class FirebaseWorkoutListAdapter extends FirebaseRecyclerAdapter
     private Context mContext;
     private ChildEventListener mChildEventListener;
     private ArrayList<Workout> mWorkouts = new ArrayList<>();
-
+    private int mOrientation;
 
 
 
@@ -74,6 +80,12 @@ public class FirebaseWorkoutListAdapter extends FirebaseRecyclerAdapter
     protected void populateViewHolder(final FirebaseWorkoutViewHolder viewHolder, Workout model
             , int position){
         viewHolder.bindWorkout(model);
+        mOrientation = viewHolder.itemView.getResources().getConfiguration().orientation;
+
+        if(mOrientation == Configuration.ORIENTATION_LANDSCAPE){
+            createDetailFragment(0);
+        }
+
         viewHolder.mWorkoutTextView.setOnTouchListener(new View.OnTouchListener(){
             @Override
             public boolean onTouch(View v, MotionEvent event){
@@ -86,14 +98,27 @@ public class FirebaseWorkoutListAdapter extends FirebaseRecyclerAdapter
 
         viewHolder.itemView.setOnClickListener(new View.OnClickListener(){
             @Override
-            public void onClick(View v){
-                Intent intent = new Intent(mContext, WorkoutDetailActivity.class);
-                intent.putExtra("position", viewHolder.getAdapterPosition());
-                intent.putExtra("workout", Parcels.wrap(mWorkouts));
-                mContext.startActivity(intent);
+            public void onClick(View v) {
+                int itemPosition = viewHolder.getAdapterPosition();
+                if (mOrientation == Configuration.ORIENTATION_LANDSCAPE) {
+                    createDetailFragment(itemPosition);
+                } else {
+                    Intent intent = new Intent(mContext, WorkoutDetailActivity.class);
+                    intent.putExtra(Constants.EXTRA_KEY_POSITION, itemPosition);
+                    intent.putExtra(Constants.EXTRA_KEY_WORKOUT, Parcels.wrap(mWorkouts));
+                    mContext.startActivity(intent);
+                }
             }
         });
     }
+
+    private void createDetailFragment(int position){
+        WorkoutDetailFragment detailFragment = WorkoutDetailFragment.newInstance(mWorkouts, position);
+        FragmentTransaction ft = ((FragmentActivity) mContext).getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.workoutDetailContainer, detailFragment);
+        ft.commit();
+    }
+
     @Override
     public boolean onItemMove(int fromPosition, int toPosition){
         Collections.swap(mWorkouts, fromPosition, toPosition);

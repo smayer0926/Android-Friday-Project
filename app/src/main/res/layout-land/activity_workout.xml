@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+
+    <fragment
+        android:id="@+id/fragmentItemsList"
+        android:name="com.epicodus.athletetracker.ui.fragments.WorkoutListFragment"
+        android:layout_width="683dp"
+        android:layout_height="match_parent"
+        tools:layout="@layout/fragment_workout_list" />
+
+
+
+
+    <View
+        android:layout_width="2dp"
+        android:layout_height="wrap_content"
+        />
+
+    <FrameLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:id="@+id/workoutDetailContainer"
+        android:layout_weight="6">
+
+
+    </FrameLayout>
+
+
+</LinearLayout>

@@ -19,7 +19,7 @@ public class WorkoutPagerAdapter extends FragmentPagerAdapter {
     }
     @Override
     public Fragment getItem(int position){
-        return WorkoutDetailFragment.newInstance(mWorkouts.get(position));
+        return WorkoutDetailFragment.newInstance(mWorkouts, position);
     }
     @Override
     public int getCount(){
