@@ -22,6 +22,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import org.jsoup.Jsoup;
 import org.parceler.Parcels;
 
+import java.util.ArrayList;
+
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
@@ -32,24 +34,32 @@ public class WorkoutDetailFragment extends Fragment implements View.OnClickListe
     @Bind(R.id.workoutSaved) Button mSaveWorkoutButton;
 
     private Workout mWorkout;
+    private int mPosition;
+    private ArrayList<Workout> mWorkouts;
 
 
-
-    public static WorkoutDetailFragment newInstance(Workout workout){
+    public static WorkoutDetailFragment newInstance(ArrayList<Workout> workouts, Integer position){
         WorkoutDetailFragment workoutDetailFragment = new WorkoutDetailFragment();
         Bundle args = new Bundle();
-        args.putParcelable("workout", Parcels.wrap(workout));
+
+
+        args.putParcelable(Constants.EXTRA_KEY_WORKOUT, Parcels.wrap(workouts));
+        args.putInt(Constants.EXTRA_KEY_POSITION, position);
+
         workoutDetailFragment.setArguments(args);
         return workoutDetailFragment;
     }
 
+
+
     @Override
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-        mWorkout = Parcels.unwrap(getArguments().getParcelable("workout"));
+        mWorkouts = Parcels.unwrap(getArguments().getParcelable(Constants.EXTRA_KEY_WORKOUT));
+        mPosition = getArguments().getInt(Constants.EXTRA_KEY_POSITION);
+        mWorkout = mWorkouts.get(mPosition);
 
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
@@ -69,6 +79,11 @@ public class WorkoutDetailFragment extends Fragment implements View.OnClickListe
         return view;
     }
 
+
+
+
+
+
     @Override
     public void onClick(View v){
         if(v == mSaveWorkoutButton){
@@ -79,7 +94,6 @@ public class WorkoutDetailFragment extends Fragment implements View.OnClickListe
                     .getReference(Constants.FIREBASE_CHILD_WORKOUTS_SAVED)
                     .child(uid);
             DatabaseReference pushRef = workoutRef.push();
-//            workoutRef.push().setValue(mWorkout);
             String pushId = pushRef.getKey();
             mWorkout.setPushId(pushId);
             pushRef.setValue(mWorkout);

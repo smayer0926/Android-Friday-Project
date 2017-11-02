@@ -4,6 +4,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import com.epicodus.athletetracker.Constants;
 import com.epicodus.athletetracker.Models.Workout;
 import com.epicodus.athletetracker.R;
 import com.epicodus.athletetracker.adapter.WorkoutPagerAdapter;
@@ -28,8 +29,8 @@ public class WorkoutDetailActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
 
-        mWorkouts = Parcels.unwrap(getIntent().getParcelableExtra("workout"));
-        int startingPosition = getIntent().getIntExtra("position", 0);
+        mWorkouts = Parcels.unwrap(getIntent().getParcelableExtra(Constants.EXTRA_KEY_WORKOUT));
+        int startingPosition = getIntent().getIntExtra(Constants.EXTRA_KEY_POSITION, 0);
 
         adapterViewPager = new WorkoutPagerAdapter(getSupportFragmentManager(), mWorkouts);
         mViewPager.setAdapter(adapterViewPager);
