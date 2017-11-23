@@ -38,15 +38,12 @@ public class FirebaseWorkoutListAdapter extends FirebaseRecyclerAdapter
     private ArrayList<Workout> mWorkouts = new ArrayList<>();
     private int mOrientation;
 
-
-
     public FirebaseWorkoutListAdapter(Class<Workout> modelClass, int modelLayout, Class<FirebaseWorkoutViewHolder> viewHolderClass,
                                       Query ref, OnStartDragListener onStartDragListener, Context context){
         super(modelClass, modelLayout, viewHolderClass, ref);
         mRef = ref.getRef();
         mOnStartDragListener = onStartDragListener;
         mContext = context;
-
         mChildEventListener = mRef.addChildEventListener(new ChildEventListener() {
 
             @Override
