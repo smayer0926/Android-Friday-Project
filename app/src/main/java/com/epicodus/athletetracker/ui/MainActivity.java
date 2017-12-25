@@ -11,14 +11,14 @@ import android.widget.Toast;
 
 import com.epicodus.athletetracker.R;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    @Bind(R.id.signup) Button mSignUp;
-    @Bind(R.id.main_text) TextView mMainText;
-    @Bind(R.id.login) Button mLogin;
+    @BindView(R.id.signup) Button mSignUp;
+    @BindView(R.id.main_text) TextView mMainText;
+    @BindView(R.id.login) Button mLogin;
 
 
 

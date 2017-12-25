@@ -13,11 +13,11 @@ import org.parceler.Parcels;
 
 import java.util.ArrayList;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class WorkoutDetailActivity extends AppCompatActivity {
-    @Bind(R.id.viewPager) ViewPager mViewPager;
+    @BindView(R.id.viewPager) ViewPager mViewPager;
     private WorkoutPagerAdapter adapterViewPager;
     ArrayList<Workout> mWorkouts = new ArrayList<>();
 

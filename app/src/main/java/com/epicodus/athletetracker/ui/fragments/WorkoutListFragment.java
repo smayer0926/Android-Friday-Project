@@ -21,7 +21,7 @@ import com.epicodus.athletetracker.adapter.WorkoutListAdapter;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -31,7 +31,7 @@ import okhttp3.Response;
 public class WorkoutListFragment extends Fragment {
 
 
-    @Bind(R.id.recycleViewer)
+    @BindView(R.id.recycleViewer)
     RecyclerView mRecyclerView;
 
     private WorkoutListAdapter mAdapter;

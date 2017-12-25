@@ -24,14 +24,14 @@ import org.parceler.Parcels;
 
 import java.util.ArrayList;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 
 public class WorkoutDetailFragment extends Fragment implements View.OnClickListener {
-    @Bind(R.id.workoutHeader) TextView mWorkoutHeader;
-    @Bind(R.id.descriptionBox) TextView mDescriptionBox;
-    @Bind(R.id.workoutSaved) Button mSaveWorkoutButton;
+    @BindView(R.id.workoutHeader) TextView mWorkoutHeader;
+    @BindView(R.id.descriptionBox) TextView mDescriptionBox;
+    @BindView(R.id.workoutSaved) Button mSaveWorkoutButton;
 
     private Workout mWorkout;
     private int mPosition;

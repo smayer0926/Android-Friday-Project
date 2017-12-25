@@ -23,12 +23,12 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 
 public class SavedWorkoutListFragment extends Fragment implements OnStartDragListener{
-  @Bind(R.id.recycleViewer) RecyclerView mRecyclerView;
+  @BindView(R.id.recycleViewer) RecyclerView mRecyclerView;
     private FirebaseWorkoutListAdapter mFirebaseAdapter;
     private ItemTouchHelper mItemTouchHelper;
 

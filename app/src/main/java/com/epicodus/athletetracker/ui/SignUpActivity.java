@@ -20,7 +20,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class SignUpActivity extends AppCompatActivity implements View.OnClickListener{
@@ -31,13 +31,13 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
     private ProgressDialog mAuthProgressDialog;
     private String mExtraName;
 
-    @Bind(R.id.sign_up_Button) Button mSignUpButton;
-    @Bind(R.id.Email)EditText mEmail;
-    @Bind(R.id.password) EditText mPassword;
-    @Bind(R.id.confirmPasswordEditText) EditText mConfirmPassword;
-    @Bind(R.id.name) EditText mName;
-    @Bind(R.id.age) EditText mAge;
-    @Bind(R.id.loginTextView) TextView mLoginTextView;
+    @BindView(R.id.sign_up_Button) Button mSignUpButton;
+    @BindView(R.id.Email)EditText mEmail;
+    @BindView(R.id.password) EditText mPassword;
+    @BindView(R.id.confirmPasswordEditText) EditText mConfirmPassword;
+    @BindView(R.id.name) EditText mName;
+    @BindView(R.id.age) EditText mAge;
+    @BindView(R.id.loginTextView) TextView mLoginTextView;
 
 
 

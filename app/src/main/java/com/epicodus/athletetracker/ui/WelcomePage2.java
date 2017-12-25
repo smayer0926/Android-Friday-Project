@@ -43,7 +43,7 @@ import org.parceler.Parcels;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 import static android.R.id.message;
@@ -53,11 +53,11 @@ import static com.epicodus.athletetracker.R.id.name;
 public class WelcomePage2 extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
         public Context context;
-        @Bind(R.id.toolbar) Toolbar mTools;
-        @Bind(R.id.welcomePageHeader) TextView mWelcomePage;
+        @BindView(R.id.toolbar) Toolbar mTools;
+        @BindView(R.id.welcomePageHeader) TextView mWelcomePage;
 
 
-        @Bind(R.id.nav_view) NavigationView navigationView;
+        @BindView(R.id.nav_view) NavigationView navigationView;
 
         private FirebaseAuth mAuth;
         private FirebaseAuth.AuthStateListener mAuthListener;

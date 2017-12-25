@@ -19,7 +19,7 @@ import com.epicodus.athletetracker.adapter.WorkoutPagerAdapter;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import okhttp3.Call;
 import okhttp3.Callback;
