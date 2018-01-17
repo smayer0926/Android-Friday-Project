@@ -46,6 +46,9 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.epicodus.athletetracker.ui.MainActivity" />
         </activity>
+        <activity
+            android:name=".BottomNavigation"
+            android:label="@string/title_activity_bottom_navigation"></activity>
     </application>
 
 </manifest>

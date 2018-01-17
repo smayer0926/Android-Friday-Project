@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/Home"
+        android:checked="true"
+        android:icon="@drawable/ic_home_white_24dp"
+        android:title="@string/home"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/workout"
+        android:checked="false"
+        android:icon="@drawable/ic_fitness_center_white_24dp"
+        android:title="@string/workouts"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/action_account"
+        android:checked="false"
+        android:icon="@drawable/ic_account_box_white_24dp"
+        android:title="@string/account"
+        app:showAsAction="ifRoom" />
+</menu>

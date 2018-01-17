@@ -13,8 +13,9 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_logout">Logout</string>
-
-
+    <string name="home">Home</string>
+    <string name="workouts">Workouts</string>
+    <string name="account">Account</string>
     <!--Sign Up page information -->
     <string name="SignUpemail">Your Email</string>
     <string name="SignUppassword">Your Password</string>
@@ -43,6 +44,10 @@
     <string name="userName">User Name Here</string>
     <string name="userEmail">User Email?</string>
     <string name="title_activity_login">Sign in</string>
+    <string name="title_activity_bottom_navigation">BottomNavigation</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
 
 
 </resources>
