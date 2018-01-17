@@ -45,13 +45,11 @@ import butterknife.ButterKnife;
 public class WelcomePage2 extends AppCompatActivity
         {
     public Context context;
-    @BindView(R.id.toolbar)
-    Toolbar mTools;
+//    @BindView(R.id.toolbar)
+//    Toolbar mTools;
     @BindView(R.id.welcomePageHeader)
     TextView mWelcomePage;
-
-
-    BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
+    @BindView(R.id.navigation) BottomNavigationView navigation;
 
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
