@@ -52,6 +52,8 @@ public class WorkoutService {
                     JSONObject newWorkoutJSON = workoutInformationJSON.getJSONObject(i);
                     if(newWorkoutJSON.getString("license_author").equals("Magenta") || newWorkoutJSON.getString("license_author").equals("admintest123")){
                         continue;
+                    } else if(newWorkoutJSON.getString("name").equals("")){
+                        continue;
                     }
                     String name = newWorkoutJSON.getString("name");
                     String description = newWorkoutJSON.getString("description");

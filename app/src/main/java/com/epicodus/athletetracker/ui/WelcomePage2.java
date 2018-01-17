@@ -45,8 +45,7 @@ import butterknife.ButterKnife;
 public class WelcomePage2 extends AppCompatActivity
         {
     public Context context;
-//    @BindView(R.id.toolbar)
-//    Toolbar mTools;
+
     @BindView(R.id.welcomePageHeader)
     TextView mWelcomePage;
     @BindView(R.id.navigation) BottomNavigationView navigation;
