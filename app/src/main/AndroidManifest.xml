@@ -46,6 +46,12 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.epicodus.athletetracker.ui.MainActivity" />
         </activity>
+        <activity
+            android:name=".ui.AccountActivity">
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value="com.epicodus.athletetracker.ui.MainActivity" />
+    </activity>
     </application>
 
 </manifest>
