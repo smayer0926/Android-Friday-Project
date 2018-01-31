@@ -4,6 +4,7 @@ package com.epicodus.athletetracker.ui.fragments;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.ContentLoadingProgressBar;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -34,6 +35,7 @@ public class WorkoutListFragment extends Fragment {
     @BindView(R.id.recycleViewer)
     RecyclerView mRecyclerView;
 
+
     private WorkoutListAdapter mAdapter;
     public ArrayList<Workout> mWorkouts = new ArrayList<>();
 
@@ -52,6 +54,7 @@ public class WorkoutListFragment extends Fragment {
         ButterKnife.bind(this, view);
 
         getWorkouts();
+
         return view;
     }
     public void getWorkouts(){

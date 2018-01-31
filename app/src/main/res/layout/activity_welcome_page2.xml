@@ -5,7 +5,13 @@
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.epicodus.athletetracker.BottomNavigation">
+    tools:context="com.epicodus.athletetracker.ui.WelcomePage2">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/background"
+        android:scaleType="centerCrop"/>
 
     <TextView
         android:id="@+id/welcomePageHeader"
@@ -13,6 +19,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:textSize="32sp"
+        android:textColor="#fff"
         app:layout_constraintBottom_toTopOf="@+id/navigation"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"

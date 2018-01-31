@@ -4,33 +4,15 @@ package com.epicodus.athletetracker.ui;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
-import android.net.Uri;
 import android.os.Bundle;
-
 
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v4.app.FragmentTransaction;
 
-import android.support.design.widget.NavigationView;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-
-
-import android.support.v7.widget.Toolbar;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.ListView;
 import android.widget.TextView;
 
-
-import com.epicodus.athletetracker.BottomNavigation;
 import com.epicodus.athletetracker.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -42,8 +24,7 @@ import butterknife.ButterKnife;
 
 
 
-public class WelcomePage2 extends AppCompatActivity
-        {
+public class WelcomePage2 extends AppCompatActivity {
     public Context context;
 
     @BindView(R.id.welcomePageHeader)
@@ -52,12 +33,6 @@ public class WelcomePage2 extends AppCompatActivity
 
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
-
-
-    public void clearFunction() {
-        mWelcomePage.setText("");
-    }
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,19 +45,13 @@ public class WelcomePage2 extends AppCompatActivity
 
         mAuth = FirebaseAuth.getInstance();
         mAuthListener = new FirebaseAuth.AuthStateListener() {
-//            View hView = navigationView.getHeaderView(0);
-//            TextView nav_user = (TextView) hView.findViewgById(R.id.name_on_Nav);
-//            TextView nav_email = (TextView) hView.findViewById(R.id.email_on_Nav);
+
 
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
                 if (user != null) {
                     mWelcomePage.setText("Welcome, " + user.getDisplayName() + "!");
-//                    nav_user.setText(user.getDisplayName());
-//                    nav_email.setText(user.getEmail());
-                } else {
-
                 }
             }
         };
@@ -123,7 +92,6 @@ public class WelcomePage2 extends AppCompatActivity
         startActivity(intent);
         finish();
     }
-
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
