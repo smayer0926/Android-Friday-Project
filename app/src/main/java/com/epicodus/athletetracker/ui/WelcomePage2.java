@@ -111,7 +111,7 @@ public class WelcomePage2 extends AppCompatActivity {
                     break;
 
                 case R.id.action_account:
-                    Intent accountIntent = new Intent(WelcomePage2.this, WelcomePage2.class);
+                    Intent accountIntent = new Intent(WelcomePage2.this, AccountActivity.class);
                     startActivity(accountIntent);
                     break;
             }
